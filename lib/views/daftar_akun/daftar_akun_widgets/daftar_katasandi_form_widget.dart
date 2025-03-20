@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
-import 'package:jeknyong_app/utils/scale_helper.dart';
+import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:provider/provider.dart';
 
 class DaftarKatasandiFormWidget extends StatefulWidget {
   const DaftarKatasandiFormWidget({super.key});
@@ -12,16 +13,20 @@ class DaftarKatasandiFormWidget extends StatefulWidget {
 }
 
 class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
-  late ScaleHelper _scaleHelper;
   bool _isObscurePassword = true;
   bool _isObscureConfirmPassword = true;
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ScaleFactorController>().initScaleHelper(context);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    _scaleHelper = ScaleHelper(
-      figmaWidth: 360,
-      screenWidth: MediaQuery.of(context).size.width,
-    );
+    final scaleHelper = context.watch<ScaleFactorController>().scaleHelper;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,13 +34,13 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
         Text(
           'Kata Sandi',
           style: TextStyleConstant.textStyleReguler.copyWith(
-            fontSize: _scaleHelper.scaleText(14),
+            fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),
         ),
-        SizedBox(height: _scaleHelper.scaleHeight(4)),
+        SizedBox(height: scaleHelper.scaleHeight(4)),
         SizedBox(
-          height: _scaleHelper.scaleHeight(60),
+          height: scaleHelper.scaleHeight(60),
           child: TextField(
             obscureText: _isObscurePassword,
             decoration: InputDecoration(
@@ -53,7 +58,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  _scaleHelper.scaleWidth(10),
+                  scaleHelper.scaleWidth(10),
                 ),
                 borderSide: BorderSide(
                   width: 1,
@@ -62,7 +67,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  _scaleHelper.scaleWidth(10),
+                  scaleHelper.scaleWidth(10),
                 ),
                 borderSide: BorderSide(
                   width: 1,
@@ -71,7 +76,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  _scaleHelper.scaleWidth(10),
+                  scaleHelper.scaleWidth(10),
                 ),
                 borderSide: BorderSide(
                   width: 1,
@@ -82,18 +87,18 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
           ),
         ),
 
-        SizedBox(height: _scaleHelper.scaleHeight(16)),
+        SizedBox(height: scaleHelper.scaleHeight(16)),
 
         Text(
           'Konfirmasi Kata Sandi',
           style: TextStyleConstant.textStyleReguler.copyWith(
-            fontSize: _scaleHelper.scaleText(14),
+            fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),
         ),
-        SizedBox(height: _scaleHelper.scaleHeight(4)),
+        SizedBox(height: scaleHelper.scaleHeight(4)),
         SizedBox(
-          height: _scaleHelper.scaleHeight(60),
+          height: scaleHelper.scaleHeight(60),
           child: TextField(
             obscureText: _isObscureConfirmPassword,
             decoration: InputDecoration(
@@ -113,7 +118,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  _scaleHelper.scaleWidth(10),
+                  scaleHelper.scaleWidth(10),
                 ),
                 borderSide: BorderSide(
                   width: 1,
@@ -122,7 +127,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  _scaleHelper.scaleWidth(10),
+                  scaleHelper.scaleWidth(10),
                 ),
                 borderSide: BorderSide(
                   width: 1,
@@ -131,7 +136,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(
-                  _scaleHelper.scaleWidth(10),
+                  scaleHelper.scaleWidth(10),
                 ),
                 borderSide: BorderSide(
                   width: 1,

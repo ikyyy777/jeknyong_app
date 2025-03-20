@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
-class LoginButtonWidget extends StatefulWidget {
-  const LoginButtonWidget({super.key});
+class DaftarAkunButtonWidget extends StatefulWidget {
+  const DaftarAkunButtonWidget({super.key});
 
   @override
-  State<LoginButtonWidget> createState() => _LoginButtonWidgetState();
+  State<DaftarAkunButtonWidget> createState() => _DaftarAkunButtonWidgetState();
 }
 
-class _LoginButtonWidgetState extends State<LoginButtonWidget> {
+class _DaftarAkunButtonWidgetState extends State<DaftarAkunButtonWidget> {
+
   @override
   void initState() {
     super.initState();
@@ -23,13 +25,13 @@ class _LoginButtonWidgetState extends State<LoginButtonWidget> {
   @override
   Widget build(BuildContext context) {
     final scaleHelper = context.watch<ScaleFactorController>().scaleHelper;
-
     return SizedBox(
       width: double.infinity,
       height: scaleHelper.scaleHeight(50),
       child: ElevatedButton(
         onPressed: () {
-          // TODO: Tambahkan logika untuk login
+          final navigationService = context.read<NavigationService>();
+          navigationService.navigateTo('/lengkapi-data-1');
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.lerp(
@@ -43,7 +45,7 @@ class _LoginButtonWidgetState extends State<LoginButtonWidget> {
           ),
         ),
         child: Text(
-          "Masuk",
+          "Daftar Akun",
           style: TextStyleConstant.textStyleSemiBold.copyWith(
             fontSize: scaleHelper.scaleText(16),
             color: ColorConstant.whiteColor,

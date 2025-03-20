@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
-import 'package:jeknyong_app/utils/scale_helper.dart';
+import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:provider/provider.dart';
 
 class DaftarHeaderWidget extends StatefulWidget {
   const DaftarHeaderWidget({super.key});
@@ -11,14 +12,9 @@ class DaftarHeaderWidget extends StatefulWidget {
 }
 
 class _DaftarHeaderWidgetState extends State<DaftarHeaderWidget> {
-  late ScaleHelper _scaleHelper;
-
   @override
   Widget build(BuildContext context) {
-    _scaleHelper = ScaleHelper(
-      figmaWidth: 360,
-      screenWidth: MediaQuery.of(context).size.width,
-    );
+    final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,8 +24,8 @@ class _DaftarHeaderWidgetState extends State<DaftarHeaderWidget> {
             Navigator.pop(context);
           },
           child: Container(
-            width: _scaleHelper.scaleWidth(40),
-            height: _scaleHelper.scaleHeight(40),
+            width: scaleHelper.scaleWidth(40),
+            height: scaleHelper.scaleHeight(40),
             decoration: BoxDecoration(
               color: ColorConstant.whiteColor,
               border: Border.all(color: ColorConstant.borderColor),
@@ -39,22 +35,22 @@ class _DaftarHeaderWidgetState extends State<DaftarHeaderWidget> {
           ),
         ),
 
-        SizedBox(height: _scaleHelper.scaleHeight(16)),
+        SizedBox(height: scaleHelper.scaleHeight(16)),
 
         Text(
           'Daftar Akun',
           style: TextStyleConstant.textStyleSemiBold.copyWith(
-            fontSize: _scaleHelper.scaleText(24),
+            fontSize: scaleHelper.scaleText(24),
             color: ColorConstant.blackColor,
           ),
         ),
 
-        SizedBox(height: _scaleHelper.scaleHeight(16)),
+        SizedBox(height: scaleHelper.scaleHeight(16)),
 
         Text(
           'Buat Akun untuk melanjutkan',
           style: TextStyleConstant.textStyleReguler.copyWith(
-            fontSize: _scaleHelper.scaleText(14),
+            fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),
         ),
