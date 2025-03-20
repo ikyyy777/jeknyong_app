@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
-import 'package:jeknyong_app/utils/scale_helper.dart';
+import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/global_widget/text_form_field_global_widget.dart';
+import 'package:provider/provider.dart';
 
 class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({super.key});
@@ -12,19 +14,25 @@ class LoginFormWidget extends StatefulWidget {
 
 class _LoginFormWidgetState extends State<LoginFormWidget> {
   bool _isObscure = true;
-  late ScaleHelper _scaleHelper;
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ScaleFactorController>().initScaleHelper(context);
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _scaleHelper = ScaleHelper(
-      figmaWidth: 360,
-      screenWidth: MediaQuery.of(context).size.width,
-    );
+    final scaleHelper = context.watch<ScaleFactorController>().scaleHelper;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,65 +40,37 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         Text(
           'Masuk Akun',
           style: TextStyleConstant.textStyleSemiBold.copyWith(
-            fontSize: _scaleHelper.scaleText(24),
+            fontSize: scaleHelper.scaleText(24),
           ),
         ),
-        SizedBox(height: _scaleHelper.scaleHeight(8)),
+        SizedBox(height: scaleHelper.scaleHeight(8)),
         Text(
           "Masukan Informasi Akun berikut",
           style: TextStyleConstant.textStyleReguler.copyWith(
-            fontSize: _scaleHelper.scaleText(14),
+            fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.lightTextColor,
           ),
         ),
-        SizedBox(height: _scaleHelper.scaleHeight(24)),
+        SizedBox(height: scaleHelper.scaleHeight(24)),
         Text(
           "Username",
           style: TextStyleConstant.textStyleReguler.copyWith(
-            fontSize: _scaleHelper.scaleText(14),
+            fontSize: scaleHelper.scaleText(14),
           ),
         ),
-        SizedBox(height: _scaleHelper.scaleHeight(4)),
-        SizedBox(
-          height: _scaleHelper.scaleHeight(60),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: "Masukkan Username",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(_scaleHelper.scaleWidth(10)),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: ColorConstant.borderColor,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(_scaleHelper.scaleWidth(10)),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: ColorConstant.borderColor,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(_scaleHelper.scaleWidth(10)),
-                borderSide: BorderSide(
-                  width: 1,
-                  color: ColorConstant.borderColor,
-                ),
-              ),
-            ),
-          ),
-        ),
+        SizedBox(height: scaleHelper.scaleHeight(4)),
+        TextFormFieldGlobalWidget(controller: _controller, hintText: 'Masukkan Username'),
 
-        SizedBox(height: _scaleHelper.scaleHeight(16)),
+        SizedBox(height: scaleHelper.scaleHeight(16)),
         Text(
           "Kata Sandi",
           style: TextStyleConstant.textStyleReguler.copyWith(
-            fontSize: _scaleHelper.scaleText(14),
+            fontSize: scaleHelper.scaleText(14),
           ),
         ),
-        SizedBox(height: _scaleHelper.scaleHeight(4)),
+        SizedBox(height: scaleHelper.scaleHeight(4)),
         SizedBox(
-          height: _scaleHelper.scaleHeight(60),
+          height: scaleHelper.scaleHeight(60),
           child: TextField(
             obscureText: _isObscure,
             decoration: InputDecoration(
@@ -107,21 +87,21 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 },
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(_scaleHelper.scaleWidth(10)),
+                borderRadius: BorderRadius.circular(scaleHelper.scaleWidth(10)),
                 borderSide: BorderSide(
                   width: 1,
                   color: ColorConstant.borderColor,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(_scaleHelper.scaleWidth(10)),
+                borderRadius: BorderRadius.circular(scaleHelper.scaleWidth(10)),
                 borderSide: BorderSide(
                   width: 1,
                   color: ColorConstant.borderColor,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(_scaleHelper.scaleWidth(10)),
+                borderRadius: BorderRadius.circular(scaleHelper.scaleWidth(10)),
                 borderSide: BorderSide(
                   width: 1,
                   color: ColorConstant.borderColor,
@@ -130,7 +110,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             ),
           ),
         ),
-        SizedBox(height: _scaleHelper.scaleHeight(16)),
+        SizedBox(height: scaleHelper.scaleHeight(16)),
         GestureDetector(
           onTap: () {
             // Tambahkan logika untuk mengarahkan ke halaman lupa password
@@ -140,7 +120,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             child: Text(
               "Lupa Password?",
               style: TextStyleConstant.textStyleSemiBold.copyWith(
-                fontSize: _scaleHelper.scaleText(14),
+                fontSize: scaleHelper.scaleText(14),
                 color: ColorConstant.primaryColor,
               ),
             ),

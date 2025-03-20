@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
-import 'package:jeknyong_app/utils/scale_helper.dart';
+import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:provider/provider.dart';
 
-class DaftarAkunButtonWidget extends StatefulWidget {
-  const DaftarAkunButtonWidget({super.key});
+class LengkapiData2SelanjutnyaButtonWidget extends StatefulWidget {
+  const LengkapiData2SelanjutnyaButtonWidget({super.key});
 
   @override
-  State<DaftarAkunButtonWidget> createState() => _DaftarAkunButtonWidgetState();
+  State<LengkapiData2SelanjutnyaButtonWidget> createState() =>
+      _LengkapiData2SelanjutnyaButtonWidgetState();
 }
 
-class _DaftarAkunButtonWidgetState extends State<DaftarAkunButtonWidget> {
-  late ScaleHelper _scaleHelper;
-
+class _LengkapiData2SelanjutnyaButtonWidgetState
+    extends State<LengkapiData2SelanjutnyaButtonWidget> {
   @override
   Widget build(BuildContext context) {
-    _scaleHelper = ScaleHelper(
-      figmaWidth: 360,
-      screenWidth: MediaQuery.of(context).size.width,
-    );
-
+    final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
     return SizedBox(
       width: double.infinity,
-      height: _scaleHelper.scaleHeight(50),
+      height: scaleHelper.scaleHeight(50),
       child: ElevatedButton(
         onPressed: () {
-          // TODO: Tambahkan logika untuk login
+          // TODO: Implementasi logika untuk menyimpan data
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.lerp(
@@ -34,14 +31,14 @@ class _DaftarAkunButtonWidgetState extends State<DaftarAkunButtonWidget> {
             0.95,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(_scaleHelper.scaleWidth(10)),
+            borderRadius: BorderRadius.circular(scaleHelper.scaleWidth(10)),
             side: BorderSide(width: 1, color: ColorConstant.primaryColor),
           ),
         ),
         child: Text(
-          "Daftar Akun",
+          "Selanjutnya",
           style: TextStyleConstant.textStyleSemiBold.copyWith(
-            fontSize: _scaleHelper.scaleText(16),
+            fontSize: scaleHelper.scaleText(16),
             color: ColorConstant.whiteColor,
           ),
         ),

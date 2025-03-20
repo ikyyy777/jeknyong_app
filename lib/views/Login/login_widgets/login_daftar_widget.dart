@@ -2,8 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
+import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/utils/navigation_service.dart';
-import 'package:jeknyong_app/utils/scale_helper.dart';
 import 'package:provider/provider.dart';
 
 class LoginDaftarWidget extends StatefulWidget {
@@ -14,14 +14,17 @@ class LoginDaftarWidget extends StatefulWidget {
 }
 
 class _LoginDaftarWidgetState extends State<LoginDaftarWidget> {
-  late ScaleHelper _scaleHelper;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ScaleFactorController>().initScaleHelper(context);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    _scaleHelper = ScaleHelper(
-      figmaWidth: 360,
-      screenWidth: MediaQuery.of(context).size.width,
-    );
+    final scaleHelper = context.watch<ScaleFactorController>().scaleHelper;
 
     return Center(
       child: RichText(
@@ -30,14 +33,14 @@ class _LoginDaftarWidgetState extends State<LoginDaftarWidget> {
             TextSpan(
               text: "Belum punya akun? ",
               style: TextStyleConstant.textStyleReguler.copyWith(
-                fontSize: _scaleHelper.scaleText(14),
+                fontSize: scaleHelper.scaleText(14),
                 color: ColorConstant.lightTextColor2,
               ),
             ),
             TextSpan(
               text: "Daftar",
               style: TextStyleConstant.textStyleSemiBold.copyWith(
-                fontSize: _scaleHelper.scaleText(14),
+                fontSize: scaleHelper.scaleText(14),
                 color: ColorConstant.primaryColor,
               ),
               recognizer:

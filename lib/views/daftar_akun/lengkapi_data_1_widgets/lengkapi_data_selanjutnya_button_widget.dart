@@ -2,34 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
-class LoginButtonWidget extends StatefulWidget {
-  const LoginButtonWidget({super.key});
+class LengkapiDataSelanjutnyaButtonWidget extends StatefulWidget {
+  const LengkapiDataSelanjutnyaButtonWidget({super.key});
 
   @override
-  State<LoginButtonWidget> createState() => _LoginButtonWidgetState();
+  State<LengkapiDataSelanjutnyaButtonWidget> createState() =>
+      _LengkapiDataSelanjutnyaButtonWidgetState();
 }
 
-class _LoginButtonWidgetState extends State<LoginButtonWidget> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ScaleFactorController>().initScaleHelper(context);
-    });
-  }
-
+class _LengkapiDataSelanjutnyaButtonWidgetState
+    extends State<LengkapiDataSelanjutnyaButtonWidget> {
   @override
   Widget build(BuildContext context) {
-    final scaleHelper = context.watch<ScaleFactorController>().scaleHelper;
-
+    final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
     return SizedBox(
       width: double.infinity,
       height: scaleHelper.scaleHeight(50),
       child: ElevatedButton(
         onPressed: () {
-          // TODO: Tambahkan logika untuk login
+          final navigationService = context.read<NavigationService>();
+          navigationService.navigateTo('/lengkapi-data-2');
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.lerp(
@@ -43,7 +38,7 @@ class _LoginButtonWidgetState extends State<LoginButtonWidget> {
           ),
         ),
         child: Text(
-          "Masuk",
+          "Selanjutnya",
           style: TextStyleConstant.textStyleSemiBold.copyWith(
             fontSize: scaleHelper.scaleText(16),
             color: ColorConstant.whiteColor,

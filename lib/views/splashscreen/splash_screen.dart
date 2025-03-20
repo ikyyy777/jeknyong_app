@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/utils/navigation_service.dart';
-import 'package:jeknyong_app/utils/scale_helper.dart';
+import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,14 +12,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  late ScaleHelper _scaleHelper;
-
   @override
   void initState() {
     super.initState();
     // Use addPostFrameCallback to ensure the context is available
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final navigationService = Provider.of<NavigationService>(context, listen: false);
+      final scaleController = Provider.of<ScaleFactorController>(context, listen: false);
+      scaleController.initScaleHelper(context);
+      
       Future.delayed(const Duration(seconds: 3), () {
         navigationService.navigateTo('/login');
       });
@@ -28,15 +29,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _scaleHelper = ScaleHelper(
-      figmaWidth: 360,
-      screenWidth: MediaQuery.of(context).size.width,
-    );
+    final scaleHelper = Provider.of<ScaleFactorController>(context).scaleHelper;
 
     return Scaffold(
       backgroundColor: ColorConstant.whiteColor,
       body: Center(
-        child: Image.asset('assets/images/logo.png', width: _scaleHelper.scaleWidth(100)),
+        child: Image.asset('assets/images/logo.png', width: scaleHelper.scaleWidth(100)),
       ),
     );
   }
