@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class LoginButtonWidget extends StatefulWidget {
@@ -30,6 +31,8 @@ class _LoginButtonWidgetState extends State<LoginButtonWidget> {
       child: ElevatedButton(
         onPressed: () {
           // TODO: Tambahkan logika untuk login
+          final navigationService = context.read<NavigationService>();
+          navigationService.navigateTo('/navigation-bar');
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.lerp(
