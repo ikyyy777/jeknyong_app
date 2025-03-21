@@ -52,7 +52,7 @@ class LengkapiData2HeaderWidget extends StatelessWidget {
         SizedBox(height: scaleHelper.scaleHeight(8)),
         Text(
           'Tambahkan Alamat',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.lightTextColor,
           ),

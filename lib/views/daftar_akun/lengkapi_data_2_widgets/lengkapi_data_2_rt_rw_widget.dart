@@ -28,7 +28,7 @@ class _LengkapiData2RtRwWidgetState extends State<LengkapiData2RtRwWidget> {
             children: [
               Text(
                 "RT",
-                style: TextStyleConstant.textStyleReguler.copyWith(
+                style: TextStyleConstant.textStyleRegular.copyWith(
                   fontSize: scaleHelper.scaleText(14),
                   color: ColorConstant.blackColor,
                 ),
@@ -49,7 +49,7 @@ class _LengkapiData2RtRwWidgetState extends State<LengkapiData2RtRwWidget> {
             children: [
               Text(
                 "RW",
-                style: TextStyleConstant.textStyleReguler.copyWith(
+                style: TextStyleConstant.textStyleRegular.copyWith(
                   fontSize: scaleHelper.scaleText(14),
                   color: ColorConstant.blackColor,
                 ),

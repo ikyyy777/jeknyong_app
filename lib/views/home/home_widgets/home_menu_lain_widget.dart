@@ -34,7 +34,7 @@ class _HomeMenuLainWidgetState extends State<HomeMenuLainWidget> {
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: TextStyleConstant.textStyleReguler.copyWith(
+            style: TextStyleConstant.textStyleRegular.copyWith(
               fontSize: scaleHelper.scaleText(14),
               color: ColorConstant.blackColor,
             ),

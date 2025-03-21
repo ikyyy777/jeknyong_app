@@ -52,7 +52,7 @@ class LengkapiDataHeaderWidget extends StatelessWidget {
         SizedBox(height: scaleHelper.scaleHeight(8)),
         Text(
           'Lengkapi Informasi Data Kamu',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.lightTextColor,
           ),

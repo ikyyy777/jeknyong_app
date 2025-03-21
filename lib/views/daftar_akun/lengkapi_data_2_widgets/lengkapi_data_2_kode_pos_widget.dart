@@ -23,7 +23,7 @@ class _LengkapiData2KodePosWidgetState extends State<LengkapiData2KodePosWidget>
       children: [
         Text(
           'Kode Pos',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

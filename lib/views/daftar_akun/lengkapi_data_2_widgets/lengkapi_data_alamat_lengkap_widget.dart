@@ -21,7 +21,7 @@ class _LengkapiDataAlamatLengkapWidgetState extends State<LengkapiDataAlamatLeng
       children: [
         Text(
           "Alamat Lengkap",
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
           ),
         ),

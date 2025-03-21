@@ -81,7 +81,7 @@ class _HomeSaldokuWidgetState extends State<HomeSaldokuWidget> {
                       ),
                       Text(
                         ' Proses',
-                        style: TextStyleConstant.textStyleReguler.copyWith(
+                        style: TextStyleConstant.textStyleRegular.copyWith(
                           fontSize: scaleHelper.scaleText(12),
                           color: ColorConstant.blackColor,
                         ),
@@ -105,7 +105,7 @@ class _HomeSaldokuWidgetState extends State<HomeSaldokuWidget> {
                       ),
                       Text(
                         ' Selesai',
-                        style: TextStyleConstant.textStyleReguler.copyWith(
+                        style: TextStyleConstant.textStyleRegular.copyWith(
                           fontSize: scaleHelper.scaleText(12),
                           color: ColorConstant.blackColor,
                         ),
@@ -129,7 +129,7 @@ class _HomeSaldokuWidgetState extends State<HomeSaldokuWidget> {
                       ),
                       Text(
                         ' Batal',
-                        style: TextStyleConstant.textStyleReguler.copyWith(
+                        style: TextStyleConstant.textStyleRegular.copyWith(
                           fontSize: scaleHelper.scaleText(12),
                           color: ColorConstant.blackColor,
                         ),

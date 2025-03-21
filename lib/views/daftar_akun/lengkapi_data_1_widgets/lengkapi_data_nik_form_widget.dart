@@ -32,7 +32,7 @@ class _LengkapiDataNikFormWidgetState extends State<LengkapiDataNikFormWidget> {
       children: [
         Text(
           "NIK",
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

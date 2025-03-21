@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/controllers/daftar_akun_controller.dart';
+import 'package:jeknyong_app/controllers/home_controller.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:jeknyong_app/views/daftar_akun/daftar_akun_view.dart';
@@ -17,6 +18,7 @@ void main() {
         Provider(create: (_) => NavigationService()),
         ChangeNotifierProvider(create: (_) => DaftarAkunController()),
         ChangeNotifierProvider(create: (_) => ScaleFactorController()),
+        ChangeNotifierProvider(create: (_) => HomeController()),
       ],
       child: const MyApp(),
     ),

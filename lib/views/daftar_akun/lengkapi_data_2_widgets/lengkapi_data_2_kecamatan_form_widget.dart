@@ -23,7 +23,7 @@ class _LengkapiData2KecamatanFormWidgetState extends State<LengkapiData2Kecamata
       children: [
         Text(
           'Kecamatan',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

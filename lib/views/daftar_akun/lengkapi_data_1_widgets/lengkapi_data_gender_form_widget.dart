@@ -33,7 +33,7 @@ class _LengkapiDataGenderFormWidgetState
       children: [
         Text(
           'Jenis Kelamin',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),
@@ -55,7 +55,7 @@ class _LengkapiDataGenderFormWidgetState
                 ),
                 Text(
                   'Laki-laki',
-                  style: TextStyleConstant.textStyleReguler.copyWith(
+                  style: TextStyleConstant.textStyleRegular.copyWith(
                     fontSize: scaleHelper.scaleText(14),
                     color: ColorConstant.blackColor,
                   ),
@@ -81,7 +81,7 @@ class _LengkapiDataGenderFormWidgetState
                 ),
                 Text(
                   'Perempuan',
-                  style: TextStyleConstant.textStyleReguler.copyWith(
+                  style: TextStyleConstant.textStyleRegular.copyWith(
                     fontSize: scaleHelper.scaleText(14),
                     color: ColorConstant.blackColor,
                   ),
