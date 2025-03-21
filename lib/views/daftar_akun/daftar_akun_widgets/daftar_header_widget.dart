@@ -49,7 +49,7 @@ class _DaftarHeaderWidgetState extends State<DaftarHeaderWidget> {
 
         Text(
           'Buat Akun untuk melanjutkan',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

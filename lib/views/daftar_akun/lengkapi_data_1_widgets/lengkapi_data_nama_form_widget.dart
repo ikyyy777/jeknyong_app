@@ -34,7 +34,7 @@ class _LengkapiDataNamaFormWidgetState
       children: [
         Text(
           'Nama Lengkap',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

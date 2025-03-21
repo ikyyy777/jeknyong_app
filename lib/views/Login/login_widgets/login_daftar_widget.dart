@@ -32,7 +32,7 @@ class _LoginDaftarWidgetState extends State<LoginDaftarWidget> {
           children: [
             TextSpan(
               text: "Belum punya akun? ",
-              style: TextStyleConstant.textStyleReguler.copyWith(
+              style: TextStyleConstant.textStyleRegular.copyWith(
                 fontSize: scaleHelper.scaleText(14),
                 color: ColorConstant.lightTextColor2,
               ),

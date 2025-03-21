@@ -34,7 +34,7 @@ class _DaftarKebijakanWidgetState extends State<DaftarKebijakanWidget> {
           children: [
             TextSpan(
               text: "Dengan mendaftar, Anda menyetujui ",
-              style: TextStyleConstant.textStyleReguler.copyWith(
+              style: TextStyleConstant.textStyleRegular.copyWith(
                 fontSize: scaleHelper.scaleText(14),
                 color: ColorConstant.lightTextColor2,
               ),
@@ -53,7 +53,7 @@ class _DaftarKebijakanWidgetState extends State<DaftarKebijakanWidget> {
             ),
             TextSpan(
               text: "dan ",
-              style: TextStyleConstant.textStyleReguler.copyWith(
+              style: TextStyleConstant.textStyleRegular.copyWith(
                 fontSize: scaleHelper.scaleText(14),
                 color: ColorConstant.lightTextColor2,
               ),

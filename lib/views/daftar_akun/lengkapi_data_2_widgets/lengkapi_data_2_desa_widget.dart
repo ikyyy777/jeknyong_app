@@ -23,7 +23,7 @@ class _LengkapiData2DesaWidgetState extends State<LengkapiData2DesaWidget> {
       children: [
         Text(
           'Desa',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

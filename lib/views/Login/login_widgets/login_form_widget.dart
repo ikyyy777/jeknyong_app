@@ -46,7 +46,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         SizedBox(height: scaleHelper.scaleHeight(8)),
         Text(
           "Masukan Informasi Akun berikut",
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.lightTextColor,
           ),
@@ -54,7 +54,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         SizedBox(height: scaleHelper.scaleHeight(24)),
         Text(
           "Username",
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
           ),
         ),
@@ -64,7 +64,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
         SizedBox(height: scaleHelper.scaleHeight(16)),
         Text(
           "Kata Sandi",
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
           ),
         ),

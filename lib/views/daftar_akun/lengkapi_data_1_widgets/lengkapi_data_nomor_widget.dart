@@ -23,7 +23,7 @@ class _LengkapiDataNomorWidgetState extends State<LengkapiDataNomorWidget> {
       children: [
         Text(
           "Nomor Whatsapp",
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

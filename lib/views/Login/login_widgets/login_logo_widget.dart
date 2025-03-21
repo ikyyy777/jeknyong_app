@@ -23,7 +23,7 @@ class LoginLogoWidget extends StatelessWidget {
               decoration: BoxDecoration(color: ColorConstant.redColor),
               child: Text(
                 ' J E K N Y O N G ',
-                style: TextStyleConstant.textStyleReguler.copyWith(
+                style: TextStyleConstant.textStyleRegular.copyWith(
                   fontSize: scaleHelper.scaleText(20),
                   color: ColorConstant.whiteColor,
                 ),

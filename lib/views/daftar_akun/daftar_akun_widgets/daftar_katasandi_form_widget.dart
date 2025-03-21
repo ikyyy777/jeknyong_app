@@ -33,7 +33,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
       children: [
         Text(
           'Kata Sandi',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),
@@ -91,7 +91,7 @@ class _DaftarKatasandiFormWidgetState extends State<DaftarKatasandiFormWidget> {
 
         Text(
           'Konfirmasi Kata Sandi',
-          style: TextStyleConstant.textStyleReguler.copyWith(
+          style: TextStyleConstant.textStyleRegular.copyWith(
             fontSize: scaleHelper.scaleText(14),
             color: ColorConstant.blackColor,
           ),

@@ -34,7 +34,7 @@ class _LoginGoogleButtonWidgetState extends State<LoginGoogleButtonWidget> {
             SizedBox(width: scaleHelper.scaleWidth(16)),
             Text(
               "Atau",
-              style: TextStyleConstant.textStyleReguler.copyWith(
+              style: TextStyleConstant.textStyleRegular.copyWith(
                 fontSize: scaleHelper.scaleText(12),
                 color: ColorConstant.lightTextColor,
               ),
