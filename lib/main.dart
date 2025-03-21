@@ -6,6 +6,7 @@ import 'package:jeknyong_app/views/daftar_akun/daftar_akun_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_view.dart';
 import 'package:jeknyong_app/views/login/login_view.dart';
+import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
 import 'package:provider/provider.dart';
 import 'package:jeknyong_app/views/splashscreen/splash_screen.dart';
 
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/daftar-akun': (context) => const DaftarAkunView(),
         '/lengkapi-data-1': (context) => const LengkapiData1View(),
         '/lengkapi-data-2': (context) => const LengkapiData2View(),
+        '/navigation-bar': (context) => const NavigationBarView(),
       },
     );
   }
