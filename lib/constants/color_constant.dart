@@ -15,5 +15,6 @@ class ColorConstant {
   static Color greyColor = Color(0xffF4F4F4);
   static Color secondaryColorDarker = Color(0xff228B22);
   static Color secondaryColorLighter = Color(0xffD9FFD9);
-  static Color navbarUnselectedColor = Color(0xff828282);
+  static Color darkColor3 = Color(0xff828282);
+  static Color yellowColor = Color(0xffFFC107);
 }
