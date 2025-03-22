@@ -4,6 +4,7 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/views/home/home_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_view.dart';
 
 class NavigationBarView extends StatefulWidget {
   const NavigationBarView({super.key});
@@ -64,7 +65,7 @@ class _NavigationBarViewState extends State<NavigationBarView> {
             'Jual Sampah',
             style: TextStyleConstant.textStyleRegular.copyWith(
               fontSize: 12,
-              color: showJualSampahPage ? ColorConstant.primaryColor : ColorConstant.navbarUnselectedColor,
+              color: showJualSampahPage ? ColorConstant.primaryColor : ColorConstant.darkColor3,
             ),
           ),
         ],
@@ -87,11 +88,7 @@ class _NavigationBarViewState extends State<NavigationBarView> {
             )
           : <Widget>[
               const HomeView(),
-              Container(
-                color: Colors.green,
-                alignment: Alignment.center,
-                child: const Text('Page 2'),
-              ),
+              const OlehOlehView(),
               Container(
                 color: Colors.blue,
                 alignment: Alignment.center,
@@ -198,21 +195,21 @@ class NavBar extends StatelessWidget {
                   width: 28,
                   height: 28,
                   colorFilter: ColorFilter.mode(
-                    selected ? ColorConstant.primaryColor : ColorConstant.navbarUnselectedColor,
+                    selected ? ColorConstant.primaryColor : ColorConstant.darkColor3,
                     BlendMode.srcIn,
                   ),
                 )
               : Icon(
                   icon,
                   size: 28,
-                  color: selected ? ColorConstant.primaryColor : ColorConstant.navbarUnselectedColor,
+                  color: selected ? ColorConstant.primaryColor : ColorConstant.darkColor3,
                 ),
             const SizedBox(height: 4),
             Text(
               label,
               style: TextStyleConstant.textStyleRegular.copyWith(
                 fontSize: 12,
-                color: selected ? ColorConstant.primaryColor : ColorConstant.navbarUnselectedColor,
+                color: selected ? ColorConstant.primaryColor : ColorConstant.darkColor3,
               ),
             ),
           ],
