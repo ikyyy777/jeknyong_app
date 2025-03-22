@@ -30,23 +30,25 @@ class _LoginViewState extends State<LoginView> {
 
     return Scaffold(
       backgroundColor: ColorConstant.whiteColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: scaleHelper.scaleHeight(24)),
-              LoginLogoWidget(),
-              SizedBox(height: scaleHelper.scaleHeight(24)),
-              LoginFormWidget(),
-              SizedBox(height: scaleHelper.scaleHeight(24)), 
-              LoginButtonWidget(),
-              SizedBox(height: scaleHelper.scaleHeight(16)),
-              LoginGoogleButtonWidget(),
-              SizedBox(height: scaleHelper.scaleHeight(40)),
-              LoginDaftarWidget(),
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: scaleHelper.scaleHeight(24)),
+                LoginLogoWidget(),
+                SizedBox(height: scaleHelper.scaleHeight(24)),
+                LoginFormWidget(),
+                SizedBox(height: scaleHelper.scaleHeight(24)), 
+                LoginButtonWidget(),
+                SizedBox(height: scaleHelper.scaleHeight(16)),
+                LoginGoogleButtonWidget(),
+                SizedBox(height: scaleHelper.scaleHeight(40)),
+                LoginDaftarWidget(),
+              ],
+            ),
           ),
         ),
       ),

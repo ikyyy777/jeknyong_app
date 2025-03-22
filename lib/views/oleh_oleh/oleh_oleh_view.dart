@@ -20,24 +20,26 @@ class _OlehOlehViewState extends State<OlehOlehView> {
   @override
   Widget build(BuildContext context) {
     final scaleHelper = context.watch<ScaleFactorController>().scaleHelper;
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            OlehOlehLokasiWidget(),
-            SizedBox(height: scaleHelper.scaleHeight(16)),
-            OlehOlehSearchBarWidget(),
-            SizedBox(height: scaleHelper.scaleHeight(16)),
-            OlehOlehBannerWidget(),
-            SizedBox(height: scaleHelper.scaleHeight(24)),
-            OlehOlehKategoriProdukWidget(),
-            SizedBox(height: scaleHelper.scaleHeight(24)),
-            OlehOlehTokoRekomendasiWidget(),
-            SizedBox(height: scaleHelper.scaleHeight(24)),
-          ],
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              OlehOlehLokasiWidget(),
+              SizedBox(height: scaleHelper.scaleHeight(16)),
+              OlehOlehSearchBarWidget(),
+              SizedBox(height: scaleHelper.scaleHeight(16)),
+              OlehOlehBannerWidget(),
+              SizedBox(height: scaleHelper.scaleHeight(24)),
+              OlehOlehKategoriProdukWidget(),
+              SizedBox(height: scaleHelper.scaleHeight(24)),
+              OlehOlehTokoRekomendasiWidget(),
+              SizedBox(height: scaleHelper.scaleHeight(24)),
+            ],
+          ),
         ),
       ),
     );
