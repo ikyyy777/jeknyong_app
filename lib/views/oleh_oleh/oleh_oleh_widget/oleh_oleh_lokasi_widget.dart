@@ -20,7 +20,7 @@ class _OlehOlehLokasiWidgetState extends State<OlehOlehLokasiWidget> {
       children: [
         Column(
           children: [
-            SizedBox(height: scaleHelper.scaleHeight(46)),
+            SizedBox(height: scaleHelper.scaleHeight(26)),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
