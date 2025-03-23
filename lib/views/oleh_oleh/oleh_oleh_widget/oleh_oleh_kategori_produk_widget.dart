@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/views/kategori_produk/kategori_produk_view.dart';
 import 'package:provider/provider.dart';
 
 class OlehOlehKategoriProdukWidget extends StatefulWidget {
@@ -62,17 +63,56 @@ class _OlehOlehKategoriProdukWidgetState
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              _buildImageContainer('assets/icons/elektronik.svg', 'Elektronik'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => KategoriProdukView(kategori: 'Elektronik'),
+                    ),
+                  );
+                },
+                child: _buildImageContainer('assets/icons/elektronik.svg', 'Elektronik'),
+              ),
               SizedBox(width: scaleHelper.scaleWidth(8)),
-              _buildImageContainer('assets/icons/furniture.svg', 'Furniture'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => KategoriProdukView(kategori: 'Furniture'),
+                    ),
+                  );
+                },
+                child: _buildImageContainer('assets/icons/furniture.svg', 'Furniture'),
+              ),
               SizedBox(width: scaleHelper.scaleWidth(8)),
-              _buildImageContainer('assets/icons/kerajinan.svg', 'Kerajinan'),
-              SizedBox(width: scaleHelper.scaleWidth(8)), 
-              _buildImageContainer('assets/icons/pakaian.svg', 'Pakaian'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => KategoriProdukView(kategori: 'Kerajinan'),
+                    ),
+                  );
+                },
+                child: _buildImageContainer('assets/icons/kerajinan.svg', 'Kerajinan'),
+              ),
+              SizedBox(width: scaleHelper.scaleWidth(8)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => KategoriProdukView(kategori: 'Pakaian'),
+                    ),
+                  );
+                },
+                child: _buildImageContainer('assets/icons/pakaian.svg', 'Pakaian'),
+              ),
             ],
           ),
         ),
-        
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 import 'package:jeknyong_app/controllers/oleh_oleh_controller.dart';
 import 'package:jeknyong_app/global_widget/toko_rekomendasi_global_widget.dart';
@@ -33,17 +34,24 @@ class _OlehOlehTokoRekomendasiWidgetState
               ),
             ),
             Spacer(),
-            Text(
-              'Lihat Semua',
-              style: TextStyleConstant.textStyleSemiBold.copyWith(
-                fontSize: scaleHelper.scaleText(14),
-                color: ColorConstant.primaryColor,
+            GestureDetector(
+              onTap: () {
+                final navigationService = context.read<NavigationService>();
+                navigationService.navigateTo('/toko-rekomendasi');
+              },
+              child: Text(
+                'Lihat Semua',
+                style: TextStyleConstant.textStyleSemiBold.copyWith(
+                  fontSize: scaleHelper.scaleText(14),
+                  color: ColorConstant.primaryColor,
+                ),
               ),
             ),
           ],
         ),
         SizedBox(height: scaleHelper.scaleHeight(16)),
         ...context.watch<OlehOlehController>().tokoRekomendasi
+            .take(4)
             .map((toko) => TokoRekomendasiGlobalWidget(toko: toko))
             .toList(),
       ],
