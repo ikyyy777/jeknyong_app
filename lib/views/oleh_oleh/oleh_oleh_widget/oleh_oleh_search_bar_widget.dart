@@ -84,7 +84,7 @@ class _OlehOlehSearchBarWidgetState extends State<OlehOlehSearchBarWidget> {
                 ),
                 child: Center(
                   child: Icon(
-                    Icons.shopping_cart,
+                    Icons.shopping_cart_outlined,
                     color: ColorConstant.blackColor,
                   ),
                 ),
