@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/controllers/oleh_oleh_controller.dart';
 import 'package:provider/provider.dart';
 
 class OlehOlehLokasiWidget extends StatefulWidget {
@@ -15,6 +16,7 @@ class _OlehOlehLokasiWidgetState extends State<OlehOlehLokasiWidget> {
   @override
   Widget build(BuildContext context) {
     final scaleHelper = context.watch<ScaleFactorController>().scaleHelper;
+    final olehOlehController = context.watch<OlehOlehController>();
     
     return Column(
       children: [
@@ -52,7 +54,7 @@ class _OlehOlehLokasiWidgetState extends State<OlehOlehLokasiWidget> {
                     Row(
                       children: [
                         Text(
-                          'Kembaran',
+                          "Kembaran",
                           style: TextStyleConstant.textStyleBold
                               .copyWith(
                                 fontSize: scaleHelper.scaleText(16),

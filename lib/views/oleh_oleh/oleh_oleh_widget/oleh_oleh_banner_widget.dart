@@ -18,31 +18,33 @@ class _OlehOlehBannerWidgetState extends State<OlehOlehBannerWidget> {
 
     return Column(
       children: [
-        CarouselSlider(
-          options: CarouselOptions(
-            height: scaleHelper.scaleHeight(144),
-            autoPlay: true,
-            autoPlayInterval: Duration(seconds: 3),
-            enableInfiniteScroll: false,
-            viewportFraction: 1,
-            enlargeCenterPage: true,
-          ),
-          items: context
-              .read<OlehOlehController>()
-              .olehOlehBanner
-              .map(
-                (item) => Container(
-                  margin: EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage(item),
-                      fit: BoxFit.cover
-                    )
-                  ),
-                ),
-              )
-              .toList(),
+        Consumer<OlehOlehController>(
+          builder: (context, controller, child) {
+            return CarouselSlider(
+              options: CarouselOptions(
+                height: scaleHelper.scaleHeight(144),
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 3),
+                enableInfiniteScroll: false,
+                viewportFraction: 1,
+                enlargeCenterPage: true,
+              ),
+              items: controller.olehOlehBanner
+                  .map(
+                    (item) => Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: AssetImage(item),
+                          fit: BoxFit.cover
+                        )
+                      ),
+                    ),
+                  )
+                  .toList(),
+            );
+          }
         ),
       ],
     );
