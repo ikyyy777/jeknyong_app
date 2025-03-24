@@ -5,10 +5,12 @@ import 'package:jeknyong_app/controllers/kategori_produk_controller.dart';
 import 'package:jeknyong_app/controllers/oleh_oleh_controller.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/toko_rekomendasi_controller.dart';
+import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
 import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:jeknyong_app/views/daftar_akun/daftar_akun_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_view.dart';
+import 'package:jeknyong_app/views/detail_toko/detail_toko_view.dart';
 import 'package:jeknyong_app/views/login/login_view.dart';
 import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
 import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_view.dart';
@@ -27,6 +29,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => OlehOlehController()),
         ChangeNotifierProvider(create: (_) => TokoRekomendasiController()),
         ChangeNotifierProvider(create: (_) => KategoriProdukController()),
+        ChangeNotifierProvider(create: (_) => DetailTokoController()),
       ],
       child: const MyApp(),
     ),
