@@ -6,7 +6,7 @@ import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
 import 'package:jeknyong_app/models/detail_toko_model.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:jeknyong_app/views/detail_produk/detail_produk_sheet_view.dart';
+import 'package:jeknyong_app/views/detail_produk_sheet/detail_produk_sheet_view.dart';
 
 class DetailTokoProdukWidget extends StatefulWidget {
   final String tokoName;
@@ -56,9 +56,9 @@ class _DetailTokoProdukWidgetState extends State<DetailTokoProdukWidget> {
                                 top: Radius.circular(20),
                               ),
                             ),
-                            builder: (context) => DetailProdukSheetView(
-                              product: product,
-                            ),
+                            builder:
+                                (context) =>
+                                    DetailProdukSheetView(product: product),
                           );
                         },
                         child: ProdukItemWidget(
@@ -66,7 +66,20 @@ class _DetailTokoProdukWidgetState extends State<DetailTokoProdukWidget> {
                           namaProduk: product.name,
                           jumlahTerjual: "${product.terjual} Terjual",
                           harga: "Rp ${formatCurrency.format(product.price)}",
-                          onTapAdd: () {},
+                          onTapAdd: () {
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              context: context,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(20),
+                                ),
+                              ),
+                              builder:
+                                  (context) =>
+                                      DetailProdukSheetView(product: product),
+                            );
+                          },
                         ),
                       ),
                     ),

@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class DetailTokoImageBannerWidget extends StatefulWidget {
   final String tokoName;
-  
-  const DetailTokoImageBannerWidget({
-    super.key,
-    required this.tokoName,
-  });
+
+  const DetailTokoImageBannerWidget({super.key, required this.tokoName});
 
   @override
   State<DetailTokoImageBannerWidget> createState() =>
@@ -63,17 +61,24 @@ class _DetailTokoImageBannerWidgetState
                       ),
                     ),
                   ),
-                  Container(
-                    width: scaleHelper.scaleWidth(40),
-                    height: scaleHelper.scaleHeight(40),
-                    decoration: BoxDecoration(
-                      color: ColorConstant.whiteColor,
-                      border: Border.all(color: ColorConstant.borderColor),
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    ),
-                    child: Icon(
-                      Icons.shopping_cart_outlined,
-                      color: ColorConstant.blackColor,
+                  GestureDetector(
+                    onTap: () {
+                      final navigationService =
+                          context.read<NavigationService>();
+                      navigationService.navigateTo('/keranjang-oleh-oleh');
+                    },
+                    child: Container(
+                      width: scaleHelper.scaleWidth(40),
+                      height: scaleHelper.scaleHeight(40),
+                      decoration: BoxDecoration(
+                        color: ColorConstant.whiteColor,
+                        border: Border.all(color: ColorConstant.borderColor),
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      ),
+                      child: Icon(
+                        Icons.shopping_cart_outlined,
+                        color: ColorConstant.blackColor,
+                      ),
                     ),
                   ),
                 ],
@@ -81,7 +86,7 @@ class _DetailTokoImageBannerWidgetState
             ),
           ],
         );
-      }
+      },
     );
   }
 }
