@@ -3,6 +3,7 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/keranjang_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:jeknyong_app/views/keranjang_oleh_oleh/keranjang_oleh_oleh_widget/keranjang_oleh_oleh_alamat_widget.dart';
 import 'package:jeknyong_app/views/keranjang_oleh_oleh/keranjang_oleh_oleh_widget/keranjang_oleh_oleh_daftar_produk_widget.dart';
 import 'package:jeknyong_app/views/keranjang_oleh_oleh/keranjang_oleh_oleh_widget/keranjang_oleh_oleh_informasi_tambahan_widget.dart';
@@ -103,6 +104,8 @@ class _KeranjangOlehOlehViewState extends State<KeranjangOlehOlehView> {
                         ElevatedButton(
                           onPressed: () {
                             // Implementasi navigasi ke halaman pembayaran
+                            final navigationService = context.read<NavigationService>();
+                            navigationService.navigateTo('/metode-pembayaran');
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: ColorConstant.primaryColor,
