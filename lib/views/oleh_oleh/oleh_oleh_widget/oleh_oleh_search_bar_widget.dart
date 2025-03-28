@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class OlehOlehSearchBarWidget extends StatefulWidget {
@@ -70,22 +71,28 @@ class _OlehOlehSearchBarWidgetState extends State<OlehOlehSearchBarWidget> {
                 ),
               ),
               SizedBox(width: scaleHelper.scaleWidth(8)),
-              Container(
-                width: scaleHelper.scaleWidth(48),
-                height: scaleHelper.scaleHeight(48),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    scaleHelper.scaleWidth(10),
+              GestureDetector(
+                onTap: () {
+                  final navigationService = context.read<NavigationService>();
+                  navigationService.navigateTo('/keranjang-oleh-oleh');
+                },
+                child: Container(
+                  width: scaleHelper.scaleWidth(48),
+                  height: scaleHelper.scaleHeight(48),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      scaleHelper.scaleWidth(10),
+                    ),
+                    border: Border.all(
+                      width: 1,
+                      color: ColorConstant.borderColor,
+                    ),
                   ),
-                  border: Border.all(
-                    width: 1,
-                    color: ColorConstant.borderColor,
-                  ),
-                ),
-                child: Center(
-                  child: Icon(
-                    Icons.shopping_cart_outlined,
-                    color: ColorConstant.blackColor,
+                  child: Center(
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                      color: ColorConstant.blackColor,
+                    ),
                   ),
                 ),
               ),

@@ -6,6 +6,8 @@ import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/models/detail_toko_model.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:jeknyong_app/views/keranjang_sheet/keranjang_sheet_view.dart';
+import 'package:jeknyong_app/controllers/keranjang_controller.dart';
 
 class DetailProdukSheetView extends StatefulWidget {
   final Product product;
@@ -85,6 +87,43 @@ class _DetailProdukSheetViewState extends State<DetailProdukSheetView> {
         ),
       ],
     );
+  }
+
+  void _showSuccessSheet(BuildContext context) {
+    Navigator.pop(context); // Tutup bottom sheet detail produk
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      builder: (context) => Consumer<DetailTokoController>(
+        builder: (context, controller, child) => KeranjangSheetView(
+          addedProduct: widget.product,
+          selectedVariant: controller.selectedVariants[widget.product.name] ?? '',
+        ),
+      ),
+    );
+  }
+
+  void _addToCart(BuildContext context) {
+    final controller = context.read<DetailTokoController>();
+    final keranjangController = context.read<KeranjangController>();
+    
+    final selectedVariant = controller.selectedVariants[widget.product.name];
+    if (selectedVariant == null) {
+      // Tampilkan pesan error jika variant belum dipilih
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Silakan pilih ${widget.product.typeVariant} terlebih dahulu'),
+        ),
+      );
+      return;
+    }
+
+    keranjangController.addToCart(widget.product, selectedVariant);
+    _showSuccessSheet(context);
   }
 
   @override
@@ -167,7 +206,7 @@ class _DetailProdukSheetViewState extends State<DetailProdukSheetView> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => _addToCart(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorConstant.primaryColor,
                     padding: EdgeInsets.symmetric(
