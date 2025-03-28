@@ -66,7 +66,6 @@ class MyApp extends StatelessWidget {
         '/toko-rekomendasi': (context) => const TokoRekomendasiView(),
         '/keranjang-oleh-oleh': (context) => const KeranjangOlehOlehView(),
         '/metode-pembayaran': (context) => const MetodePembayaranView(),
-        '/lakukan-pembayaran': (context) => const LakukanPembayaranView(),
       },
     );
   }

@@ -5,6 +5,8 @@ import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/pembayaran_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
+import 'package:jeknyong_app/utils/navigation_service.dart';
+import 'package:jeknyong_app/views/lakukan_pembayaran/lakukan_pembayaran_view.dart';
 import 'package:provider/provider.dart';
 import 'package:jeknyong_app/controllers/keranjang_controller.dart';
 import 'package:intl/intl.dart';
@@ -24,7 +26,7 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
     final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
     final pembayaranController = context.watch<PembayaranController>();
     final keranjangController = context.watch<KeranjangController>();
-    
+
     final totalHarga = keranjangController.getTotalPrice() + 10000;
 
     return Scaffold(
@@ -78,21 +80,30 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
                                   SizedBox(width: scaleHelper.scaleWidth(16)),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           paymentMethod.name,
-                                          style: TextStyleConstant.textStyleSemiBold.copyWith(
-                                            fontSize: scaleHelper.scaleText(14),
-                                          ),
+                                          style: TextStyleConstant
+                                              .textStyleSemiBold
+                                              .copyWith(
+                                                fontSize: scaleHelper.scaleText(
+                                                  14,
+                                                ),
+                                              ),
                                         ),
                                         if (paymentMethod.description != null)
                                           Text(
                                             paymentMethod.description!,
-                                            style: TextStyleConstant.textStyleRegular.copyWith(
-                                              fontSize: scaleHelper.scaleText(12),
-                                              color: ColorConstant.darkColor3,
-                                            ),
+                                            style: TextStyleConstant
+                                                .textStyleRegular
+                                                .copyWith(
+                                                  fontSize: scaleHelper
+                                                      .scaleText(12),
+                                                  color:
+                                                      ColorConstant.darkColor3,
+                                                ),
                                           ),
                                       ],
                                     ),
@@ -100,9 +111,13 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
                                   if (paymentMethod.type == "cod")
                                     Radio(
                                       value: "cod",
-                                      groupValue: pembayaranController.selectedPaymentMethodId,
+                                      groupValue:
+                                          pembayaranController
+                                              .selectedPaymentMethodId,
                                       activeColor: ColorConstant.primaryColor,
-                                      onChanged: (value) => pembayaranController.selectCOD(),
+                                      onChanged:
+                                          (value) =>
+                                              pembayaranController.selectCOD(),
                                     ),
                                 ],
                               ),
@@ -122,7 +137,7 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
         ],
       ),
       bottomNavigationBar: Container(
-        height: scaleHelper.scaleHeight(80),
+        height: scaleHelper.scaleHeight(97),
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -135,65 +150,70 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
             ),
           ],
         ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Total Harga',
-                    style: TextStyleConstant.textStyleRegular.copyWith(
-                      fontSize: scaleHelper.scaleText(12),
-                      color: ColorConstant.darkColor2,
+        child: Container(
+          margin: EdgeInsets.only(bottom: 16),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Total Harga',
+                      style: TextStyleConstant.textStyleRegular.copyWith(
+                        fontSize: scaleHelper.scaleText(12),
+                        color: ColorConstant.darkColor2,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: scaleHelper.scaleHeight(4)),
-                  Text(
-                    'Rp ${formatCurrency.format(totalHarga)}',
-                    style: TextStyleConstant.textStyleBold.copyWith(
-                      fontSize: scaleHelper.scaleText(16),
-                      color: ColorConstant.darkColor1,
+                    SizedBox(height: scaleHelper.scaleHeight(4)),
+                    Text(
+                      'Rp ${formatCurrency.format(totalHarga)}',
+                      style: TextStyleConstant.textStyleBold.copyWith(
+                        fontSize: scaleHelper.scaleText(16),
+                        color: ColorConstant.darkColor1,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(width: scaleHelper.scaleWidth(16)),
-            Expanded(
-              child: ElevatedButton(
-                onPressed: (pembayaranController.selectedBank != null ||
-                          pembayaranController.isCODSelected)
-                    ? () {
-                        Navigator.pushNamed(
-                          context, 
-                          '/lakukan-pembayaran',
-                          arguments: {
-                            'totalHarga': totalHarga,
-                            'metodePembayaran': pembayaranController.selectedPaymentMethod,
-                            'bank': pembayaranController.selectedBank,
-                          },
-                        );
-                      }
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorConstant.primaryColor,
-                  disabledBackgroundColor: ColorConstant.darkColor3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: Text(
-                  'Bayar Sekarang',
-                  style: TextStyleConstant.textStyleSemiBold.copyWith(
-                    fontSize: scaleHelper.scaleText(14),
-                    color: Colors.white,
-                  ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              SizedBox(width: scaleHelper.scaleWidth(16)),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed:
+                      (pembayaranController.selectedBank != null ||
+                              pembayaranController.isCODSelected)
+                          ? () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LakukanPembayaranView(
+                                    totalHarga: totalHarga,
+                                    metodePembayaran: pembayaranController.selectedPaymentMethod,
+                                    bank: pembayaranController.selectedBank,
+                                  ),
+                                ),
+                              );
+                            }
+                          : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorConstant.primaryColor,
+                    disabledBackgroundColor: ColorConstant.darkColor3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    'Bayar Sekarang',
+                    style: TextStyleConstant.textStyleSemiBold.copyWith(
+                      fontSize: scaleHelper.scaleText(14),
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
