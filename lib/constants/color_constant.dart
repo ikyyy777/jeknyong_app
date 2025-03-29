@@ -19,6 +19,7 @@ class ColorConstant {
   static Color darkColor1 = Color(0xff373737);
   static Color darkColor2 = Color(0xff4F4F4F);
   static Color darkColor3 = Color(0xff828282);
+  static Color darkColor4 = Color(0xffC7C9D9);
   static Color yellowColor = Color(0xffFFC107);
   static Color greenColor = Color(0xff3CDB7F);
 }

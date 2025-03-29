@@ -9,6 +9,7 @@ import 'package:jeknyong_app/controllers/toko_rekomendasi_controller.dart';
 import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
 import 'package:jeknyong_app/controllers/keranjang_controller.dart';
 import 'package:jeknyong_app/utils/navigation_service.dart';
+import 'package:jeknyong_app/views/anorganik_tanpa_dipilah/anorganik_tanpa_dipilah_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/daftar_akun_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_view.dart';
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
         '/toko-rekomendasi': (context) => const TokoRekomendasiView(),
         '/keranjang-oleh-oleh': (context) => const KeranjangOlehOlehView(),
         '/metode-pembayaran': (context) => const MetodePembayaranView(),
+        '/anorganik-tanpa-dipilah': (context) => const AnorganikTanpaDipilahView(),
       },
     );
   }
