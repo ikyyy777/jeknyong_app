@@ -4,6 +4,7 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/views/home/home_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jeknyong_app/views/jual_sampah/jual_sampah_view.dart';
 import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_view.dart';
 
 class NavigationBarView extends StatefulWidget {
@@ -81,11 +82,7 @@ class _NavigationBarViewState extends State<NavigationBarView> {
         },
       ),
       body: showJualSampahPage
-          ? Container(
-              color: Colors.orange,
-              alignment: Alignment.center,
-              child: const Text('Halaman Jual Sampah'),
-            )
+          ? const JualSampahView()
           : <Widget>[
               const HomeView(),
               const OlehOlehView(),
