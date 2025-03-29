@@ -25,7 +25,7 @@ class CustomAppbarGlobalWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: EdgeInsets.only(top: scaleHelper.scaleHeight(16)),
+        padding: EdgeInsets.only(top: scaleHelper.scaleHeight(45)),
         child: Row(
           children: [
             if (showBackButton)
