@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/controllers/daftar_akun_controller.dart';
 import 'package:jeknyong_app/controllers/home_controller.dart';
+import 'package:jeknyong_app/controllers/jual_sampah_controller.dart';
 import 'package:jeknyong_app/controllers/kategori_produk_controller.dart';
 import 'package:jeknyong_app/controllers/oleh_oleh_controller.dart';
 import 'package:jeknyong_app/controllers/pembayaran_controller.dart';
@@ -13,9 +14,8 @@ import 'package:jeknyong_app/views/anorganik_tanpa_dipilah/anorganik_tanpa_dipil
 import 'package:jeknyong_app/views/daftar_akun/daftar_akun_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_view.dart';
-import 'package:jeknyong_app/views/detail_toko/detail_toko_view.dart';
+import 'package:jeknyong_app/views/jual_sampah_dipilah/jual_sampah_dipilah_view.dart';
 import 'package:jeknyong_app/views/keranjang_oleh_oleh/keranjang_oleh_oleh_view.dart';
-import 'package:jeknyong_app/views/lakukan_pembayaran/lakukan_pembayaran_view.dart';
 import 'package:jeknyong_app/views/login/login_view.dart';
 import 'package:jeknyong_app/views/metode_pembayaran/metode_pembayaran_view.dart';
 import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
@@ -38,6 +38,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => DetailTokoController()),
         ChangeNotifierProvider(create: (_) => KeranjangController()),
         ChangeNotifierProvider(create: (_) => PembayaranController()),
+        ChangeNotifierProvider(create: (_) => JualSampahController()),
       ],
       child: const MyApp(),
     ),
@@ -51,9 +52,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Jeknyong App',
-      theme: ThemeData(
-        fontFamily: 'OpenSans',
-      ),
+      theme: ThemeData(fontFamily: 'OpenSans'),
       home: const SplashScreen(),
       navigatorKey: context.read<NavigationService>().navigatorKey,
       initialRoute: '/',
@@ -67,7 +66,9 @@ class MyApp extends StatelessWidget {
         '/toko-rekomendasi': (context) => const TokoRekomendasiView(),
         '/keranjang-oleh-oleh': (context) => const KeranjangOlehOlehView(),
         '/metode-pembayaran': (context) => const MetodePembayaranView(),
-        '/anorganik-tanpa-dipilah': (context) => const AnorganikTanpaDipilahView(),
+        '/anorganik-tanpa-dipilah':
+            (context) => const AnorganikTanpaDipilahView(),
+        '/jual-sampah-dipilah': (context) => const JualSampahDipilahView(),
       },
     );
   }
