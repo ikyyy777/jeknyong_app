@@ -3,7 +3,6 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/keranjang_controller.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 

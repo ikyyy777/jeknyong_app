@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class DetailTokoImageBannerWidget extends StatefulWidget {
@@ -63,9 +62,7 @@ class _DetailTokoImageBannerWidgetState
                   ),
                   GestureDetector(
                     onTap: () {
-                      final navigationService =
-                          context.read<NavigationService>();
-                      navigationService.navigateTo('/keranjang-oleh-oleh');
+                      Navigator.pushNamed(context, '/keranjang-oleh-oleh');
                     },
                     child: Container(
                       width: scaleHelper.scaleWidth(40),

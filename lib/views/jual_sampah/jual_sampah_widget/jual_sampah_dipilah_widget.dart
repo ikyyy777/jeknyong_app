@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class JualSampahDipilahWidget extends StatefulWidget {
@@ -20,8 +19,7 @@ class _JualSampahDipilahWidgetState extends State<JualSampahDipilahWidget> {
     
     return GestureDetector(
       onTap: () {
-        final navigationService = context.read<NavigationService>();
-        navigationService.navigateTo('/jual-sampah-dipilah');
+        Navigator.pushNamed(context, '/jual-sampah-dipilah');
       },
       child: Container(
         width: double.infinity,

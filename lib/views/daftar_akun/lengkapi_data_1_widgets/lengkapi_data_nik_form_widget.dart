@@ -41,6 +41,7 @@ class _LengkapiDataNikFormWidgetState extends State<LengkapiDataNikFormWidget> {
         TextFormFieldGlobalWidget(
           controller: context.read<DaftarAkunController>().nikController,
           hintText: 'Masukkan NIK',
+          inputType: TextInputType.number,
         ),
       ],
     );

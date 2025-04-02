@@ -4,14 +4,14 @@ import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:provider/provider.dart';
 
-class AnorganikAlamatWidget extends StatefulWidget {
-  const AnorganikAlamatWidget({super.key});
+class JualSampahAlamatWidget extends StatefulWidget {
+  const JualSampahAlamatWidget({super.key});
 
   @override
-  State<AnorganikAlamatWidget> createState() => _AnorganikAlamatWidgetState();
+  State<JualSampahAlamatWidget> createState() => _JualSampahAlamatWidgetState();
 }
 
-class _AnorganikAlamatWidgetState extends State<AnorganikAlamatWidget> {
+class _JualSampahAlamatWidgetState extends State<JualSampahAlamatWidget> {
   @override
   Widget build(BuildContext context) {
     final scaleHelper = context.read<ScaleFactorController>().scaleHelper;

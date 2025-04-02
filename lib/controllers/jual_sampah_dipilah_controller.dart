@@ -20,7 +20,7 @@ class JenisSampah {
   });
 }
 
-class JualSampahController extends ChangeNotifier {
+class JualSampahDipilahController extends ChangeNotifier {
   List<JenisSampah> get daftarJenisSampah => _daftarJenisSampah;
   List<String> get kategoriList => ['Semua', ..._daftarJenisSampah.map((e) => e.kategori).toSet().toList()];
   

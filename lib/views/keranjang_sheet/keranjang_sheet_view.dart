@@ -4,7 +4,6 @@ import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/keranjang_controller.dart';
 import 'package:jeknyong_app/models/detail_toko_model.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -104,8 +103,7 @@ class KeranjangSheetView extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
                 // TODO: Navigate to Keranjang page
-                final navigationService = context.read<NavigationService>();
-                navigationService.navigateTo('/keranjang-oleh-oleh');
+                Navigator.pushNamed(context, '/keranjang-oleh-oleh');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: ColorConstant.primaryColor,

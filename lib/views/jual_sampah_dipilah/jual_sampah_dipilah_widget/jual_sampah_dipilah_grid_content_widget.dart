@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/controllers/jual_sampah_controller.dart';
+import 'package:jeknyong_app/controllers/jual_sampah_dipilah_controller.dart';
 import 'package:jeknyong_app/utils/scale_helper.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -22,7 +22,7 @@ class _JualSampahDipilahGridContentWidgetState
   @override
   Widget build(BuildContext context) {
     final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
-    final jualSampahController = context.watch<JualSampahController>();
+    final jualSampahController = context.watch<JualSampahDipilahController>();
     final daftarSampah = jualSampahController.daftarJenisSampah;
 
     return Padding(
