@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -17,12 +16,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Use addPostFrameCallback to ensure the context is available
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final navigationService = Provider.of<NavigationService>(context, listen: false);
       final scaleController = Provider.of<ScaleFactorController>(context, listen: false);
       scaleController.initScaleHelper(context);
       
       Future.delayed(const Duration(seconds: 3), () {
-        navigationService.navigateTo('/login');
+        Navigator.pushReplacementNamed(context, '/login');
       });
     });
   }

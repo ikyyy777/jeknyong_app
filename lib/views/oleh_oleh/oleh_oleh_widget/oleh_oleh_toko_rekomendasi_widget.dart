@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:jeknyong_app/views/detail_toko/detail_toko_view.dart';
 import 'package:provider/provider.dart';
 import 'package:jeknyong_app/controllers/oleh_oleh_controller.dart';
@@ -39,8 +38,7 @@ class _OlehOlehTokoRekomendasiWidgetState
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    final navigationService = context.read<NavigationService>();
-                    navigationService.navigateTo('/toko-rekomendasi');
+                    Navigator.pushNamed(context, '/toko-rekomendasi');
                   },
                   child: Text(
                     'Lihat Semua',

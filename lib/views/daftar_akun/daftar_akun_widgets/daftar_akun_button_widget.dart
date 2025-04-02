@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class DaftarAkunButtonWidget extends StatefulWidget {
@@ -30,8 +29,7 @@ class _DaftarAkunButtonWidgetState extends State<DaftarAkunButtonWidget> {
       height: scaleHelper.scaleHeight(50),
       child: ElevatedButton(
         onPressed: () {
-          final navigationService = context.read<NavigationService>();
-          navigationService.navigateTo('/lengkapi-data-1');
+          Navigator.pushNamed(context, '/lengkapi-data-1');
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Color.lerp(

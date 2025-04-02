@@ -33,6 +33,7 @@ class _LengkapiDataNomorWidgetState extends State<LengkapiDataNomorWidget> {
           controller:
               context.read<DaftarAkunController>().nomorWhatsappController,
           hintText: 'Masukkan Nomor',
+          inputType: TextInputType.number,
         ),
       ],
     );

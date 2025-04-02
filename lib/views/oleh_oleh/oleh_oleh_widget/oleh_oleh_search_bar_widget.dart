@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class OlehOlehSearchBarWidget extends StatefulWidget {
@@ -73,8 +72,7 @@ class _OlehOlehSearchBarWidgetState extends State<OlehOlehSearchBarWidget> {
               SizedBox(width: scaleHelper.scaleWidth(8)),
               GestureDetector(
                 onTap: () {
-                  final navigationService = context.read<NavigationService>();
-                  navigationService.navigateTo('/keranjang-oleh-oleh');
+                  Navigator.pushNamed(context, 'keranjang-oleh-oleh');
                 },
                 child: Container(
                   width: scaleHelper.scaleWidth(48),

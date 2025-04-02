@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class LoginDaftarWidget extends StatefulWidget {
@@ -46,8 +45,7 @@ class _LoginDaftarWidgetState extends State<LoginDaftarWidget> {
               recognizer:
                   TapGestureRecognizer()
                     ..onTap = () {
-                      final navigationService = Provider.of<NavigationService>(context, listen: false);
-                      navigationService.navigateTo('/daftar-akun');
+                      Navigator.pushNamed(context, '/daftar-akun');
                     },
             ),
           ],

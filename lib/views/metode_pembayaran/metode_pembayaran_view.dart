@@ -5,7 +5,6 @@ import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/pembayaran_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
-import 'package:jeknyong_app/utils/navigation_service.dart';
 import 'package:jeknyong_app/views/lakukan_pembayaran/lakukan_pembayaran_view.dart';
 import 'package:provider/provider.dart';
 import 'package:jeknyong_app/controllers/keranjang_controller.dart';
