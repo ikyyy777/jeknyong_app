@@ -4,9 +4,9 @@ import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/jual_sampah_tanpa_dipilah_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/anorganik_tanpa_dipilah_widget/jual_sampah_alamat_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/anorganik_tanpa_dipilah_widget/jual_sampah_foto_sampah_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/anorganik_tanpa_dipilah_widget/jual_sampah_informasi_tambahan_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_alamat_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_foto_sampah_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_informasi_tambahan_widget.dart';
 import 'package:provider/provider.dart';
 
 class AnorganikTanpaDipilahView extends StatefulWidget {
@@ -90,14 +90,6 @@ class _AnorganikTanpaDipilahViewState extends State<AnorganikTanpaDipilahView> {
                       : () async {
                           final success = await controller.submitForm();
                           if (success) {
-                            // Navigasi ke halaman sukses atau konfirmasi
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text("Permintaan jual sampah berhasil dikirim!"),
-                                backgroundColor: Colors.green,
-                              ),
-                            );
-                            
                             // Reset form setelah berhasil
                             controller.resetForm();
                             
