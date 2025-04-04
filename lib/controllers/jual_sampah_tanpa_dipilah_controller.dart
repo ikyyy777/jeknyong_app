@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SampahTanpaDipilahForm {
   String? alamat;
@@ -129,8 +132,56 @@ class JualSampahTanpaDipilahController extends ChangeNotifier {
     }
   }
 
-  // Tambahkan getter untuk memudahkan debugging
-  bool get isNoHPValid => form.isNoHPValid;
-  bool get isFotoValid => form.isFotoValid;
-  bool get isFormLengkap => form.isFormLengkap;
+  // Ambil data alamat dari shared preferences 
+  Future<Map<String, dynamic>> getAddressFromSharedPreferences() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      
+      // Baca data terbaru dari SharedPreferences
+      String? address = prefs.getString('selectedAddress');
+      double? latitude = prefs.getDouble('selectedLatitude');
+      double? longitude = prefs.getDouble('selectedLongitude');
+      String? subLocality = prefs.getString('selectedSubLocality');
+  
+      // Log data yang dibaca untuk debugging
+      log("JualSampahController - Membaca alamat: $address");
+      if (subLocality != null) {
+        log("JualSampahController - Membaca subLocality: $subLocality");
+      } else {
+        log("JualSampahController - subLocality tidak ditemukan");
+      }
+      
+      // Jika ada alamat yang disimpan, update form
+      if (address != null && address.isNotEmpty) {
+        setAlamat(address);
+      }
+  
+      return {
+        'address': address ?? '',
+        'latitude': latitude ?? -7.7956,
+        'longitude': longitude ?? 110.3695,
+        'subLocality': subLocality ?? '',
+      };
+    } catch (e) {
+      log("JualSampahController - Error membaca alamat: $e");
+      return {
+        'address': '',
+        'latitude': -7.7956,
+        'longitude': 110.3695,
+        'subLocality': '',
+      };
+    }
+  }
+  
+  // Sinkronkan data dengan SharedPreferences
+  Future<void> syncAddressWithSharedPreferences() async {
+    try {
+      Map<String, dynamic> addressData = await getAddressFromSharedPreferences();
+      if (addressData['address'] != null && addressData['address'].toString().isNotEmpty) {
+        setAlamat(addressData['address']);
+      }
+    } catch (e) {
+      log("Error sinkronisasi alamat: $e");
+    }
+  }
 }

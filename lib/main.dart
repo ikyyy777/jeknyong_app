@@ -6,6 +6,8 @@ import 'package:jeknyong_app/controllers/jual_sampah_tanpa_dipilah_controller.da
 import 'package:jeknyong_app/controllers/kategori_produk_controller.dart';
 import 'package:jeknyong_app/controllers/oleh_oleh_controller.dart';
 import 'package:jeknyong_app/controllers/pembayaran_controller.dart';
+import 'package:jeknyong_app/controllers/pilih_lokasi_cari_alamat_controller.dart';
+import 'package:jeknyong_app/controllers/pilih_lokasi_controller.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/toko_rekomendasi_controller.dart';
 import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
@@ -20,6 +22,7 @@ import 'package:jeknyong_app/views/login/login_view.dart';
 import 'package:jeknyong_app/views/metode_pembayaran/metode_pembayaran_view.dart';
 import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
 import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_view.dart';
+import 'package:jeknyong_app/views/pilih_lokasi/pilih_lokasi_view.dart';
 import 'package:jeknyong_app/views/toko_rekomendasi/toko_rekomendasi_view.dart';
 import 'package:jeknyong_app/views/transaksi_berhasil/transaksi_berhasil_view.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +44,10 @@ void main() {
         ChangeNotifierProvider(create: (_) => JualSampahDipilahController()),
         ChangeNotifierProvider(
           create: (_) => JualSampahTanpaDipilahController(),
+        ),
+        ChangeNotifierProvider(create: (_) => PilihLokasiController()),
+        ChangeNotifierProvider(
+          create: (_) => PilihLokasiCariAlamatController(),
         ),
       ],
       child: const MyApp(),
@@ -71,7 +78,8 @@ class MyApp extends StatelessWidget {
         '/anorganik-tanpa-dipilah':
             (context) => const AnorganikTanpaDipilahView(),
         '/jual-sampah-dipilah': (context) => const JualSampahDipilahView(),
-        '/transaksi-berhasil' : (context) => const TransaksiBerhasilView(),
+        '/transaksi-berhasil': (context) => const TransaksiBerhasilView(),
+        '/pilih-lokasi': (context) => PilihLokasiView(),
       },
     );
   }
