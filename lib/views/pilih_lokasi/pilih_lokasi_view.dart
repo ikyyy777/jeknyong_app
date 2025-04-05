@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
+import 'package:jeknyong_app/controllers/jual_sampah_dipilah_controller.dart';
 import 'package:jeknyong_app/controllers/jual_sampah_tanpa_dipilah_controller.dart';
 import 'package:jeknyong_app/controllers/pilih_lokasi_controller.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
@@ -410,13 +413,25 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
                                         await controller.saveAddressToSharedPreferences();
                                         
                                         // Sinkronkan data dengan JualSampahTanpaDipilahController
-                                        final jualController = Provider.of<JualSampahTanpaDipilahController>(
+                                        final jualTanpaDipilahController = Provider.of<JualSampahTanpaDipilahController>(
                                           context, 
                                           listen: false
                                         );
                                         
+                                        // Coba dapatkan JualSampahDipilahController jika ada
+                                        try {
+                                          final jualDipilahController = Provider.of<JualSampahDipilahController>(
+                                            context,
+                                            listen: false
+                                          );
+                                          // Sinkronkan data dengan JualSampahDipilahController
+                                          await jualDipilahController.syncAddressWithSharedPreferences();
+                                        } catch (e) {
+                                          // Jika controller tidak tersedia, abaikan
+                                        }
+                                        
                                         // Tunggu proses sinkronisasi selesai
-                                        await jualController.syncAddressWithSharedPreferences();
+                                        await jualTanpaDipilahController.syncAddressWithSharedPreferences();
                                         
                                         if (mounted) {
                                           Navigator.pop(context); // Kembali ke halaman sebelumnya

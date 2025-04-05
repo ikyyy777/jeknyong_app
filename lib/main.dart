@@ -4,6 +4,7 @@ import 'package:jeknyong_app/controllers/home_controller.dart';
 import 'package:jeknyong_app/controllers/jual_sampah_dipilah_controller.dart';
 import 'package:jeknyong_app/controllers/jual_sampah_tanpa_dipilah_controller.dart';
 import 'package:jeknyong_app/controllers/kategori_produk_controller.dart';
+import 'package:jeknyong_app/controllers/keranjang_jual_sampah_dipilah_controller.dart';
 import 'package:jeknyong_app/controllers/oleh_oleh_controller.dart';
 import 'package:jeknyong_app/controllers/pembayaran_controller.dart';
 import 'package:jeknyong_app/controllers/pilih_lokasi_cari_alamat_controller.dart';
@@ -11,13 +12,14 @@ import 'package:jeknyong_app/controllers/pilih_lokasi_controller.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/toko_rekomendasi_controller.dart';
 import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
-import 'package:jeknyong_app/controllers/keranjang_controller.dart';
+import 'package:jeknyong_app/controllers/keranjang_oleh_oleh_controller.dart';
 import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/daftar_akun_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_view.dart';
 import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_view.dart';
 import 'package:jeknyong_app/views/jual_sampah_dipilah/jual_sampah_dipilah_view.dart';
 import 'package:jeknyong_app/views/keranjang_oleh_oleh/keranjang_oleh_oleh_view.dart';
+import 'package:jeknyong_app/views/keranjang_jual_sampah/keranjang_jual_sampah_view.dart';
 import 'package:jeknyong_app/views/login/login_view.dart';
 import 'package:jeknyong_app/views/metode_pembayaran/metode_pembayaran_view.dart';
 import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
@@ -39,7 +41,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => TokoRekomendasiController()),
         ChangeNotifierProvider(create: (_) => KategoriProdukController()),
         ChangeNotifierProvider(create: (_) => DetailTokoController()),
-        ChangeNotifierProvider(create: (_) => KeranjangController()),
+        ChangeNotifierProvider(create: (_) => KeranjangOlehOlehController()),
         ChangeNotifierProvider(create: (_) => PembayaranController()),
         ChangeNotifierProvider(create: (_) => JualSampahDipilahController()),
         ChangeNotifierProvider(
@@ -48,6 +50,13 @@ void main() {
         ChangeNotifierProvider(create: (_) => PilihLokasiController()),
         ChangeNotifierProvider(
           create: (_) => PilihLokasiCariAlamatController(),
+        ),
+        ChangeNotifierProxyProvider<JualSampahDipilahController, KeranjangJualSampahDipilahController>(
+          create: (context) => KeranjangJualSampahDipilahController(
+            Provider.of<JualSampahDipilahController>(context, listen: false),
+          ),
+          update: (context, jualSampahController, previous) => 
+            previous ?? KeranjangJualSampahDipilahController(jualSampahController),
         ),
       ],
       child: const MyApp(),
@@ -80,6 +89,7 @@ class MyApp extends StatelessWidget {
         '/jual-sampah-dipilah': (context) => const JualSampahDipilahView(),
         '/transaksi-berhasil': (context) => const TransaksiBerhasilView(),
         '/pilih-lokasi': (context) => PilihLokasiView(),
+        '/keranjang-sampah': (context) => const KeranjangJualSampahView(),
       },
     );
   }

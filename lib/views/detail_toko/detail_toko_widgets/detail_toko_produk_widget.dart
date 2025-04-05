@@ -3,7 +3,6 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
-import 'package:jeknyong_app/models/detail_toko_model.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:jeknyong_app/views/detail_produk_sheet/detail_produk_sheet_view.dart';

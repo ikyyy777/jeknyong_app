@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
-import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/views/home/home_widgets/home_info_jeknyong_widget.dart';
 import 'package:jeknyong_app/views/home/home_widgets/home_lokasi_widget.dart';

@@ -6,8 +6,8 @@ import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/models/detail_toko_model.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:jeknyong_app/views/keranjang_sheet/keranjang_sheet_view.dart';
-import 'package:jeknyong_app/controllers/keranjang_controller.dart';
+import 'package:jeknyong_app/views/keranjang_oleh_oleh_sheet/keranjang_oleh_oleh_sheet_view.dart';
+import 'package:jeknyong_app/controllers/keranjang_oleh_oleh_controller.dart';
 
 class DetailProdukSheetView extends StatefulWidget {
   final Product product;
@@ -99,7 +99,7 @@ class _DetailProdukSheetViewState extends State<DetailProdukSheetView> {
         ),
       ),
       builder: (context) => Consumer<DetailTokoController>(
-        builder: (context, controller, child) => KeranjangSheetView(
+        builder: (context, controller, child) => KeranjangOlehOlehSheetView(
           addedProduct: widget.product,
           selectedVariant: controller.selectedVariants[widget.product.name] ?? '',
         ),
@@ -109,7 +109,7 @@ class _DetailProdukSheetViewState extends State<DetailProdukSheetView> {
 
   void _addToCart(BuildContext context) {
     final controller = context.read<DetailTokoController>();
-    final keranjangController = context.read<KeranjangController>();
+    final keranjangController = context.read<KeranjangOlehOlehController>();
     
     final selectedVariant = controller.selectedVariants[widget.product.name];
     if (selectedVariant == null) {
@@ -130,103 +130,96 @@ class _DetailProdukSheetViewState extends State<DetailProdukSheetView> {
   Widget build(BuildContext context) {
     final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
 
-    return DraggableScrollableSheet(
-      initialChildSize: 0.4,
-      minChildSize: 0.3,
-      maxChildSize: 0.9,
-      expand: false,
-      builder: (context, scrollController) => SingleChildScrollView(
-        controller: scrollController,
-        child: Container(
-          padding: EdgeInsets.all(scaleHelper.scaleWidth(16)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Center(
-                child: Container(
-                  width: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100.0),
-                  ),
-                  child: Divider(
-                    thickness: 4,
-                    color: ColorConstant.blackColor.withOpacity(0.6),
-                  ),
+    return Container(
+      padding: EdgeInsets.all(scaleHelper.scaleWidth(16)),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Container(
+                width: 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100.0),
+                ),
+                child: Divider(
+                  thickness: 4,
+                  color: ColorConstant.blackColor.withOpacity(0.6),
                 ),
               ),
-              SizedBox(height: scaleHelper.scaleHeight(16)),
-              Center(
-                child: Image.asset(
-                  widget.product.image,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(height: scaleHelper.scaleHeight(16)),
-              Text(
-                widget.product.name,
-                style: TextStyleConstant.textStyleSemiBold.copyWith(
-                  fontSize: scaleHelper.scaleText(18),
-                ),
-              ),
-              SizedBox(height: scaleHelper.scaleHeight(8)),
-              Text(
-                widget.product.description,
-                style: TextStyleConstant.textStyleRegular.copyWith(
-                  fontSize: scaleHelper.scaleText(14),
-                ),
-              ),
-              SizedBox(height: scaleHelper.scaleHeight(16)),
-              Text(
-                widget.product.typeVariant ?? '',
-                style: TextStyleConstant.textStyleRegular.copyWith(
-                  fontSize: scaleHelper.scaleText(14),
-                ),
-              ),
-              SizedBox(height: scaleHelper.scaleHeight(16)),
-              _buildVariantSelector(context, widget.product),
-              SizedBox(height: scaleHelper.scaleHeight(16)),
-              Consumer<DetailTokoController>(
-                builder: (context, controller, child) {
-                  double totalPrice = controller.getTotalPrice(
-                    widget.product.name,
-                    widget.product.price,
-                  );
-                  return Text(
-                    'Rp ${formatCurrency.format(totalPrice)}',
-                    style: TextStyleConstant.textStyleSemiBold.copyWith(
-                      fontSize: scaleHelper.scaleText(16),
-                      color: ColorConstant.primaryColor,
-                    ),
-                  );
-                },
-              ),
-              SizedBox(height: scaleHelper.scaleHeight(16)),
-              SizedBox(
+            ),
+            SizedBox(height: scaleHelper.scaleHeight(16)),
+            Center(
+              child: Image.asset(
+                widget.product.image,
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => _addToCart(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: ColorConstant.primaryColor,
-                    padding: EdgeInsets.symmetric(
-                      vertical: scaleHelper.scaleHeight(12),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: scaleHelper.scaleHeight(16)),
+            Text(
+              widget.product.name,
+              style: TextStyleConstant.textStyleSemiBold.copyWith(
+                fontSize: scaleHelper.scaleText(18),
+              ),
+            ),
+            SizedBox(height: scaleHelper.scaleHeight(8)),
+            Text(
+              widget.product.description,
+              style: TextStyleConstant.textStyleRegular.copyWith(
+                fontSize: scaleHelper.scaleText(14),
+              ),
+            ),
+            SizedBox(height: scaleHelper.scaleHeight(16)),
+            Text(
+              widget.product.typeVariant ?? '',
+              style: TextStyleConstant.textStyleRegular.copyWith(
+                fontSize: scaleHelper.scaleText(14),
+              ),
+            ),
+            SizedBox(height: scaleHelper.scaleHeight(16)),
+            _buildVariantSelector(context, widget.product),
+            SizedBox(height: scaleHelper.scaleHeight(16)),
+            Consumer<DetailTokoController>(
+              builder: (context, controller, child) {
+                double totalPrice = controller.getTotalPrice(
+                  widget.product.name,
+                  widget.product.price,
+                );
+                return Text(
+                  'Rp ${formatCurrency.format(totalPrice)}',
+                  style: TextStyleConstant.textStyleSemiBold.copyWith(
+                    fontSize: scaleHelper.scaleText(16),
+                    color: ColorConstant.primaryColor,
                   ),
-                  child: Text(
-                    'Tambah ke Keranjang',
-                    style: TextStyleConstant.textStyleSemiBold.copyWith(
-                      fontSize: scaleHelper.scaleText(14),
-                      color: Colors.white,
-                    ),
+                );
+              },
+            ),
+            SizedBox(height: scaleHelper.scaleHeight(16)),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => _addToCart(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorConstant.primaryColor,
+                  padding: EdgeInsets.symmetric(
+                    vertical: scaleHelper.scaleHeight(12),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text(
+                  'Tambah ke Keranjang',
+                  style: TextStyleConstant.textStyleSemiBold.copyWith(
+                    fontSize: scaleHelper.scaleText(14),
+                    color: Colors.white,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

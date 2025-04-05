@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/controllers/keranjang_controller.dart';
+import 'package:jeknyong_app/controllers/keranjang_oleh_oleh_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
 import 'package:jeknyong_app/views/keranjang_oleh_oleh/keranjang_oleh_oleh_widget/keranjang_oleh_oleh_alamat_widget.dart';
 import 'package:jeknyong_app/views/keranjang_oleh_oleh/keranjang_oleh_oleh_widget/keranjang_oleh_oleh_daftar_produk_widget.dart';
@@ -25,7 +25,7 @@ class _KeranjangOlehOlehViewState extends State<KeranjangOlehOlehView> {
   Widget build(BuildContext context) {
     final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
 
-    return Consumer<KeranjangController>(
+    return Consumer<KeranjangOlehOlehController>(
       builder: (context, keranjangController, child) {
         final isKeranjangEmpty = keranjangController.items.isEmpty;
         final totalHarga = keranjangController.getTotalPrice() + 10000; // Termasuk ongkir

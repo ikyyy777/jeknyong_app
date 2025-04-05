@@ -5,8 +5,8 @@ import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/jual_sampah_tanpa_dipilah_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
 import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_alamat_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_foto_sampah_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_informasi_tambahan_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_foto_sampah_global_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah_tanpa_dipilah/jual_sampah_tanpa_dipilah_widget/jual_sampah_informasi_tambahan_global_widget.dart';
 import 'package:provider/provider.dart';
 
 class AnorganikTanpaDipilahView extends StatefulWidget {

@@ -3,7 +3,9 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/controllers/jual_sampah_dipilah_controller.dart';
+import 'package:jeknyong_app/models/jenis_sampah_model.dart';
 import 'package:jeknyong_app/utils/scale_helper.dart';
+import 'package:jeknyong_app/views/jual_sampah_dipilah_sheet/jual_sampah_dipilah_sheet_view.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -36,36 +38,36 @@ class _JualSampahDipilahGridContentWidgetState
               fontSize: scaleHelper.scaleText(14),
             ),
           ),
-          
+
           // Grid view sampah
           daftarSampah.isEmpty
               ? Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: scaleHelper.scaleHeight(40)),
-                    child: Text(
-                      "Tidak ada jenis sampah tersedia",
-                      style: TextStyleConstant.textStyleRegular.copyWith(
-                        fontSize: scaleHelper.scaleText(14),
-                        color: ColorConstant.darkColor3,
-                      ),
+                child: Padding(
+                  padding: EdgeInsets.only(top: scaleHelper.scaleHeight(40)),
+                  child: Text(
+                    "Tidak ada jenis sampah tersedia",
+                    style: TextStyleConstant.textStyleRegular.copyWith(
+                      fontSize: scaleHelper.scaleText(14),
+                      color: ColorConstant.darkColor3,
                     ),
                   ),
-                )
-              : GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.70,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                  ),
-                  itemCount: daftarSampah.length,
-                  itemBuilder: (context, index) {
-                    final sampah = daftarSampah[index];
-                    return _buildSampahItem(sampah, scaleHelper);
-                  },
                 ),
+              )
+              : GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.70,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                ),
+                itemCount: daftarSampah.length,
+                itemBuilder: (context, index) {
+                  final sampah = daftarSampah[index];
+                  return _buildSampahItem(sampah, scaleHelper);
+                },
+              ),
         ],
       ),
     );
@@ -75,6 +77,14 @@ class _JualSampahDipilahGridContentWidgetState
     return GestureDetector(
       onTap: () {
         // Navigasi ke detail sampah atau tambahkan ke keranjang
+        showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          ),
+          builder: (context) => JualSampahDipilahSheetView(sampah: sampah),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -120,7 +130,7 @@ class _JualSampahDipilahGridContentWidgetState
                 ],
               ),
             ),
-            
+
             // Detail sampah
             Padding(
               padding: const EdgeInsets.all(8.0),
