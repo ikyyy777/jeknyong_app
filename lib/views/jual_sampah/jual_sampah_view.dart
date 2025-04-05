@@ -3,8 +3,8 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah/jual_sampah_widget/jual_sampah_anorganik_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah/jual_sampah_widget/jual_sampah_dipilah_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah/widgets/jual_sampah_anorganik_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah/widgets/jual_sampah_dipilah_widget.dart';
 import 'package:provider/provider.dart';
 
 class JualSampahView extends StatefulWidget {

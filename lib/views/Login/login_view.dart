@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/views/login/login_widgets/login_button_widget.dart';
-import 'package:jeknyong_app/views/login/login_widgets/login_daftar_widget.dart';
-import 'package:jeknyong_app/views/login/login_widgets/login_form_widget.dart';
-import 'package:jeknyong_app/views/login/login_widgets/login_google_button_widget.dart';
-import 'package:jeknyong_app/views/login/login_widgets/login_logo_widget.dart';
+import 'package:jeknyong_app/views/login/widgets/login_button_widget.dart';
+import 'package:jeknyong_app/views/login/widgets/login_daftar_widget.dart';
+import 'package:jeknyong_app/views/login/widgets/login_form_widget.dart';
+import 'package:jeknyong_app/views/login/widgets/login_google_button_widget.dart';
+import 'package:jeknyong_app/views/login/widgets/login_logo_widget.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {

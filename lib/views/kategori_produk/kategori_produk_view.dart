@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/views/kategori_produk/kategori_produk_widgets/kategori_produk_content_widget.dart';
-import 'package:jeknyong_app/views/kategori_produk/kategori_produk_widgets/kategori_produk_header_widget.dart';
+import 'package:jeknyong_app/views/kategori_produk/widgets/kategori_produk_content_widget.dart';
+import 'package:jeknyong_app/views/kategori_produk/widgets/kategori_produk_header_widget.dart';
 import 'package:provider/provider.dart';
 
 class KategoriProdukView extends StatefulWidget {

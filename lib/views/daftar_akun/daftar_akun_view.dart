@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/views/daftar_akun/daftar_akun_widgets/daftar_akun_button_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/daftar_akun_widgets/daftar_google_button_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/daftar_akun_widgets/daftar_header_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/daftar_akun_widgets/daftar_katasandi_form_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/daftar_akun_widgets/daftar_kebijakan_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/daftar_akun_widgets/daftar_username_form_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/daftar_akun_widgets/daftar_akun_button_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/daftar_akun_widgets/daftar_google_button_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/daftar_akun_widgets/daftar_header_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/daftar_akun_widgets/daftar_katasandi_form_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/daftar_akun_widgets/daftar_kebijakan_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/daftar_akun_widgets/daftar_username_form_widget.dart';
 import 'package:provider/provider.dart';
 
 class DaftarAkunView extends StatefulWidget {

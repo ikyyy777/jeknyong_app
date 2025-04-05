@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:jeknyong_app/controllers/daftar_akun_controller.dart';
 import 'package:jeknyong_app/controllers/home_controller.dart';
 import 'package:jeknyong_app/controllers/jual_sampah_dipilah_controller.dart';
@@ -31,6 +32,14 @@ import 'package:provider/provider.dart';
 import 'package:jeknyong_app/views/splashscreen/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Mengunci orientasi layar ke mode portrait saja
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  
   runApp(
     MultiProvider(
       providers: [

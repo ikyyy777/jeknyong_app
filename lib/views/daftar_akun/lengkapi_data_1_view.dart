@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_widgets/lengkapi_data_gender_form_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_widgets/lengkapi_data_header_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_widgets/lengkapi_data_nama_form_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_widgets/lengkapi_data_nik_form_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_widgets/lengkapi_data_nomor_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_1_widgets/lengkapi_data_selanjutnya_button_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_1_widgets/lengkapi_data_gender_form_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_1_widgets/lengkapi_data_header_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_1_widgets/lengkapi_data_nama_form_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_1_widgets/lengkapi_data_nik_form_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_1_widgets/lengkapi_data_nomor_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_1_widgets/lengkapi_data_selanjutnya_button_widget.dart';
 import 'package:provider/provider.dart';
 
 class LengkapiData1View extends StatefulWidget {
