@@ -4,8 +4,8 @@ import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/keranjang_jual_sampah_dipilah_controller.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/views/jual_sampah_dipilah/jual_sampah_dipilah_widget/jual_sampah_dipilah_grid_content_widget.dart';
-import 'package:jeknyong_app/views/jual_sampah_dipilah/jual_sampah_dipilah_widget/jual_sampah_dipilah_header_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah_dipilah/widgets/jual_sampah_dipilah_grid_content_widget.dart';
+import 'package:jeknyong_app/views/jual_sampah_dipilah/widgets/jual_sampah_dipilah_header_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 

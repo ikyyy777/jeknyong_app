@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/views/detail_toko/detail_toko_widgets/detail_toko_deskripsi_widget.dart';
-import 'package:jeknyong_app/views/detail_toko/detail_toko_widgets/detail_toko_image_banner_widget.dart';
-import 'package:jeknyong_app/views/detail_toko/detail_toko_widgets/detail_toko_produk_widget.dart';
+import 'package:jeknyong_app/views/detail_toko/widgets/detail_toko_deskripsi_widget.dart';
+import 'package:jeknyong_app/views/detail_toko/widgets/detail_toko_image_banner_widget.dart';
+import 'package:jeknyong_app/views/detail_toko/widgets/detail_toko_produk_widget.dart';
 import 'package:provider/provider.dart';
 
 class DetailTokoView extends StatefulWidget {

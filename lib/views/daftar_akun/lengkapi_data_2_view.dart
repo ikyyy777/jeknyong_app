@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_widgets/lengkapi_data_2_desa_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_widgets/lengkapi_data_2_header_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_widgets/lengkapi_data_2_kecamatan_form_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_widgets/lengkapi_data_2_kode_pos_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_widgets/lengkapi_data_2_rt_rw_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_widgets/lengkapi_data_2_selanjutnya_button_widget.dart';
-import 'package:jeknyong_app/views/daftar_akun/lengkapi_data_2_widgets/lengkapi_data_alamat_lengkap_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_2_widgets/lengkapi_data_2_desa_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_2_widgets/lengkapi_data_2_header_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_2_widgets/lengkapi_data_2_kecamatan_form_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_2_widgets/lengkapi_data_2_kode_pos_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_2_widgets/lengkapi_data_2_rt_rw_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_2_widgets/lengkapi_data_2_selanjutnya_button_widget.dart';
+import 'package:jeknyong_app/views/daftar_akun/widgets/lengkapi_data_2_widgets/lengkapi_data_alamat_lengkap_widget.dart';
 import 'package:provider/provider.dart';
 
 class LengkapiData2View extends StatefulWidget {
