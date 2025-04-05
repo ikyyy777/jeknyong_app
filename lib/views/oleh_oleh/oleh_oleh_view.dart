@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jeknyong_app/constants/color_constant.dart';
-import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
 import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_widget/oleh_oleh_banner_widget.dart';
 import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_widget/oleh_oleh_kategori_produk_widget.dart';

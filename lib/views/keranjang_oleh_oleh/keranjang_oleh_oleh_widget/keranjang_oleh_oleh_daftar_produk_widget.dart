@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/controllers/keranjang_controller.dart';
+import 'package:jeknyong_app/controllers/keranjang_oleh_oleh_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
@@ -22,7 +22,7 @@ class _KeranjangOlehOlehDaftarProdukWidgetState
   Widget build(BuildContext context) {
     final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
 
-    return Consumer<KeranjangController>(
+    return Consumer<KeranjangOlehOlehController>(
       builder: (context, keranjangController, child) {
         if (keranjangController.items.isEmpty) {
           return Container(
@@ -236,7 +236,7 @@ class _KeranjangOlehOlehDaftarProdukWidgetState
                       ),
                     ],
                   );
-                }).toList(),
+                }),
               ],
             ),
           ),

@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/controllers/keranjang_controller.dart';
 import 'package:jeknyong_app/models/detail_toko_model.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
-class KeranjangSheetView extends StatelessWidget {
+class KeranjangOlehOlehSheetView extends StatelessWidget {
   final Product addedProduct;
   final String selectedVariant;
 
-  const KeranjangSheetView({
+  const KeranjangOlehOlehSheetView({
     super.key,
     required this.addedProduct,
     required this.selectedVariant,

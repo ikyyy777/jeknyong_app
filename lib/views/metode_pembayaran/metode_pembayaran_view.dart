@@ -7,7 +7,7 @@ import 'package:jeknyong_app/controllers/pembayaran_controller.dart';
 import 'package:jeknyong_app/global_widget/custom_appbar_global_widget.dart';
 import 'package:jeknyong_app/views/lakukan_pembayaran/lakukan_pembayaran_view.dart';
 import 'package:provider/provider.dart';
-import 'package:jeknyong_app/controllers/keranjang_controller.dart';
+import 'package:jeknyong_app/controllers/keranjang_oleh_oleh_controller.dart';
 import 'package:intl/intl.dart';
 
 class MetodePembayaranView extends StatefulWidget {
@@ -24,7 +24,7 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
   Widget build(BuildContext context) {
     final scaleHelper = context.read<ScaleFactorController>().scaleHelper;
     final pembayaranController = context.watch<PembayaranController>();
-    final keranjangController = context.watch<KeranjangController>();
+    final keranjangController = context.watch<KeranjangOlehOlehController>();
 
     final totalHarga = keranjangController.getTotalPrice() + 10000;
 
@@ -129,7 +129,7 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
                       ),
                     ),
                   );
-                }).toList(),
+                }),
               ],
             ),
           ),
@@ -229,11 +229,6 @@ class _MetodePembayaranViewState extends State<MetodePembayaranView> {
       child: Column(
         children: [
           ...paymentMethod.banks!.map((bank) {
-            final isSelected =
-                pembayaranController.selectedPaymentMethodId ==
-                    paymentMethod.id &&
-                pembayaranController.selectedBankId == bank.id;
-
             return Column(
               children: [
                 InkWell(

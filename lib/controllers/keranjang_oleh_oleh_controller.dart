@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/models/detail_toko_model.dart';
 import 'package:jeknyong_app/models/item_keranjang_model.dart';
 
-class KeranjangController extends ChangeNotifier {
+class KeranjangOlehOlehController extends ChangeNotifier {
   final List<ItemKeranjangModel> _items = [];
 
   List<ItemKeranjangModel> get items => _items;

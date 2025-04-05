@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jeknyong_app/constants/color_constant.dart';
-import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
-import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
 import 'package:jeknyong_app/views/detail_toko/detail_toko_widgets/detail_toko_deskripsi_widget.dart';
 import 'package:jeknyong_app/views/detail_toko/detail_toko_widgets/detail_toko_image_banner_widget.dart';
 import 'package:jeknyong_app/views/detail_toko/detail_toko_widgets/detail_toko_produk_widget.dart';

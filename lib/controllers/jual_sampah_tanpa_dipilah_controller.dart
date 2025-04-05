@@ -92,7 +92,6 @@ class JualSampahTanpaDipilahController extends ChangeNotifier {
     notifyListeners();
   }
   
-  @override
   void resetForm() {
     form.alamat = null;
     form.catatan = null;
