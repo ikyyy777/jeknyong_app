@@ -49,7 +49,7 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
-  
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -104,31 +104,31 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
       body: Consumer<PilihLokasiController>(
         builder: (context, controller, child) {
           return Stack(
-            children: [
-              // Google Map - Area peta dikurangi 160dp untuk memberikan ruang bagi bottom sheet statis
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: scaleHelper.scaleHeight(
-                  160,
-                ), // Memberikan ruang untuk bottomsheet statis
-                child:
+        children: [
+          // Google Map - Area peta dikurangi 160dp untuk memberikan ruang bagi bottom sheet statis
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: scaleHelper.scaleHeight(
+              160,
+            ), // Memberikan ruang untuk bottomsheet statis
+            child:
                     controller.isLoading
-                        ? Center(
-                          child: CircularProgressIndicator(
-                            color: ColorConstant.primaryColor,
-                          ),
-                        )
-                        : GoogleMap(
+                    ? Center(
+                      child: CircularProgressIndicator(
+                        color: ColorConstant.primaryColor,
+                      ),
+                    )
+                    : GoogleMap(
                           initialCameraPosition: controller.initialPosition,
-                          myLocationEnabled: true,
-                          myLocationButtonEnabled: false,
-                          zoomControlsEnabled: false,
-                          mapToolbarEnabled: false,
-                          compassEnabled: true,
-                          mapType: MapType.normal,
-                          buildingsEnabled: true,
+                      myLocationEnabled: true,
+                      myLocationButtonEnabled: false,
+                      zoomControlsEnabled: false,
+                      mapToolbarEnabled: false,
+                      compassEnabled: true,
+                      mapType: MapType.normal,
+                      buildingsEnabled: true,
                           onMapCreated: (GoogleMapController mapController) {
                             try {
                               controller.mapController = mapController;
@@ -136,144 +136,144 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
                               if (controller.currentPosition != null) {
                                 mapController.animateCamera(
                                   CameraUpdate.newLatLngZoom(controller.currentPosition!, 15),
-                                );
-                              }
+                            );
+                          }
 
-                              Future.delayed(const Duration(milliseconds: 500), () {
+                          Future.delayed(const Duration(milliseconds: 500), () {
                                 if (controller.mapController != null) {
                                   controller.mapController!.setMapStyle('[]');
-                                }
-                              });
-                            } catch (e) {
-                              print("Error pada pembuatan peta: $e");
                             }
-                          },
-                          onCameraMove: (CameraPosition position) {
+                          });
+                        } catch (e) {
+                          print("Error pada pembuatan peta: $e");
+                        }
+                      },
+                      onCameraMove: (CameraPosition position) {
                             controller.setCameraMoving(true);
                             controller.setSelectedPosition(position.target);
-                          },
-                          onCameraIdle: () {
+                      },
+                      onCameraIdle: () {
                             controller.setCameraMoving(false);
                             controller.getAddressFromLatLng(controller.selectedPosition);
-                          },
-                        ),
-              ),
-
-              // Marker pusat tetap dengan posisi di ujung bawah marker sebagai titik lokasi
-              if (!controller.isLoading)
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: scaleHelper.scaleHeight(
-                    160,
-                  ), // Sesuaikan dengan bottom sheet
-                  child: Center(
-                    child: Container(
-                      // Berikan margin bawah 20 untuk memastikan ujung bawah marker berada di tengah peta
-                      margin: EdgeInsets.only(bottom: scaleHelper.scaleHeight(70)),
-                      child: Transform.translate(
-                        // Geser marker ke atas agar ujung bawah menjadi titik lokasi
-                        offset: Offset(0, scaleHelper.scaleHeight(20)),
-                        child: Icon(
-                          Icons.location_on,
-                          color:
-                              controller.isCameraMoving
-                                  ? Colors.grey
-                                  : ColorConstant.primaryColor,
-                          size: scaleHelper.scaleWidth(40),
-                          shadows: [
-                            Shadow(
-                              color: Colors.black.withOpacity(0.3),
-                              blurRadius: 3,
-                              offset: const Offset(1, 2),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
-              // Status pencarian alamat
-              if (!controller.isLoading && controller.isAddressLoading)
-                Positioned(
-                  top: scaleHelper.scaleHeight(16),
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: scaleHelper.scaleWidth(16),
-                        vertical: scaleHelper.scaleHeight(8),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(
-                          scaleHelper.scaleWidth(20),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            width: scaleHelper.scaleWidth(16),
-                            height: scaleHelper.scaleHeight(16),
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: ColorConstant.primaryColor,
-                            ),
-                          ),
-                          SizedBox(width: scaleHelper.scaleWidth(8)),
-                          Text(
-                            'Mencari alamat...',
-                            style: TextStyleConstant.textStyleRegular.copyWith(
-                              fontSize: scaleHelper.scaleText(14),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-
-              // Tombol floating
-              Positioned(
-                right: scaleHelper.scaleWidth(16),
-                bottom: scaleHelper.scaleHeight(
-                  250,
-                ), // Sesuaikan dengan bottom sheet
-                child: Column(
-                  children: [
-                    FloatingActionButton(
-                      heroTag: "btn1",
-                      mini: true,
-                      backgroundColor: Colors.white,
-                      onPressed: () {
-                        controller.moveToCurrentPosition();
                       },
-                      child: Icon(
-                        Icons.my_location,
-                        color: ColorConstant.primaryColor,
-                        size: scaleHelper.scaleWidth(24),
-                      ),
                     ),
-                    SizedBox(height: scaleHelper.scaleHeight(8)),
-                    FloatingActionButton(
+          ),
+
+          // Marker pusat tetap dengan posisi di ujung bawah marker sebagai titik lokasi
+              if (!controller.isLoading)
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: scaleHelper.scaleHeight(
+                160,
+              ), // Sesuaikan dengan bottom sheet
+              child: Center(
+                child: Container(
+                  // Berikan margin bawah 20 untuk memastikan ujung bawah marker berada di tengah peta
+                  margin: EdgeInsets.only(bottom: scaleHelper.scaleHeight(70)),
+                  child: Transform.translate(
+                    // Geser marker ke atas agar ujung bawah menjadi titik lokasi
+                    offset: Offset(0, scaleHelper.scaleHeight(20)),
+                    child: Icon(
+                      Icons.location_on,
+                      color:
+                              controller.isCameraMoving
+                              ? Colors.grey
+                              : ColorConstant.primaryColor,
+                      size: scaleHelper.scaleWidth(40),
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 3,
+                          offset: const Offset(1, 2),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+          // Status pencarian alamat
+              if (!controller.isLoading && controller.isAddressLoading)
+            Positioned(
+              top: scaleHelper.scaleHeight(16),
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: scaleHelper.scaleWidth(16),
+                    vertical: scaleHelper.scaleHeight(8),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(
+                      scaleHelper.scaleWidth(20),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        width: scaleHelper.scaleWidth(16),
+                        height: scaleHelper.scaleHeight(16),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: ColorConstant.primaryColor,
+                        ),
+                      ),
+                      SizedBox(width: scaleHelper.scaleWidth(8)),
+                      Text(
+                        'Mencari alamat...',
+                        style: TextStyleConstant.textStyleRegular.copyWith(
+                          fontSize: scaleHelper.scaleText(14),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+
+          // Tombol floating
+          Positioned(
+            right: scaleHelper.scaleWidth(16),
+            bottom: scaleHelper.scaleHeight(
+              250,
+            ), // Sesuaikan dengan bottom sheet
+            child: Column(
+              children: [
+                FloatingActionButton(
+                  heroTag: "btn1",
+                  mini: true,
+                  backgroundColor: Colors.white,
+                  onPressed: () {
+                        controller.moveToCurrentPosition();
+                  },
+                  child: Icon(
+                    Icons.my_location,
+                    color: ColorConstant.primaryColor,
+                    size: scaleHelper.scaleWidth(24),
+                  ),
+                ),
+                SizedBox(height: scaleHelper.scaleHeight(8)),
+                FloatingActionButton(
                       heroTag: "btn2",
-                      mini: true,
-                      backgroundColor: Colors.white,
-                      onPressed: () {
-                        // Navigasi ke halaman cari alamat
+                  mini: true,
+                  backgroundColor: Colors.white,
+                  onPressed: () {
+                    // Navigasi ke halaman cari alamat
                         Navigator.of(context).push(
-                          MaterialPageRoute(
+                      MaterialPageRoute(
                             builder: (context) => PilihLokasiCariAlamatView(
                               // Kirim callback untuk menerima hasil posisi yang dipilih
                               onLocationSelected: (
@@ -285,7 +285,7 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
                                 controller.getAddressFromLatLng(position);
                               },
                             ),
-                          ),
+                      ),
                         ).then((_) {
                           // Dipanggil ketika kembali dari halaman PilihLokasiCariAlamat
                           print("PilihLokasiView: kembali dari halaman cari alamat");
@@ -304,112 +304,112 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
                             }
                           });
                         });
-                      },
-                      child: SvgPicture.asset(
-                        'assets/icons/search.svg',
-                        width: scaleHelper.scaleWidth(15),
-                        height: scaleHelper.scaleHeight(15),
-                        color: ColorConstant.blackColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Bottom Sheet Statis
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: Container(
-                  height: scaleHelper.scaleHeight(230),
-                  padding: EdgeInsets.all(scaleHelper.scaleWidth(16)),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(scaleHelper.scaleWidth(16)),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 1,
-                        blurRadius: 5,
-                        offset: const Offset(0, -3),
-                      ),
-                    ],
+                  },
+                  child: SvgPicture.asset(
+                    'assets/icons/search.svg',
+                    width: scaleHelper.scaleWidth(15),
+                    height: scaleHelper.scaleHeight(15),
+                    color: ColorConstant.blackColor,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Judul alamat
-                      Text(
-                        "Alamat",
-                        style: TextStyleConstant.textStyleSemiBold.copyWith(
-                          fontSize: scaleHelper.scaleText(16),
-                        ),
-                      ),
-                      SizedBox(height: scaleHelper.scaleHeight(8)),
-                      Text(
-                        "${controller.selectedPosition.latitude.toStringAsFixed(6)}, ${controller.selectedPosition.longitude.toStringAsFixed(6)}",
-                        style: TextStyleConstant.textStyleRegular.copyWith(
-                          fontSize: scaleHelper.scaleText(12),
-                        ),
-                      ),
+                ),
+              ],
+            ),
+          ),
 
-                      // Alamat atau loading
-                      Container(
-                        width: double.infinity,
-                        height: scaleHelper.scaleHeight(70),
-                        padding: EdgeInsets.symmetric(
-                          vertical: scaleHelper.scaleHeight(4),
-                        ),
-                        child:
+          // Bottom Sheet Statis
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              height: scaleHelper.scaleHeight(230),
+              padding: EdgeInsets.all(scaleHelper.scaleWidth(16)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(scaleHelper.scaleWidth(16)),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 1,
+                    blurRadius: 5,
+                    offset: const Offset(0, -3),
+                  ),
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Judul alamat
+                  Text(
+                    "Alamat",
+                    style: TextStyleConstant.textStyleSemiBold.copyWith(
+                      fontSize: scaleHelper.scaleText(16),
+                    ),
+                  ),
+                  SizedBox(height: scaleHelper.scaleHeight(8)),
+                  Text(
+                        "${controller.selectedPosition.latitude.toStringAsFixed(6)}, ${controller.selectedPosition.longitude.toStringAsFixed(6)}",
+                    style: TextStyleConstant.textStyleRegular.copyWith(
+                      fontSize: scaleHelper.scaleText(12),
+                    ),
+                  ),
+
+                  // Alamat atau loading
+                  Container(
+                    width: double.infinity,
+                    height: scaleHelper.scaleHeight(70),
+                    padding: EdgeInsets.symmetric(
+                      vertical: scaleHelper.scaleHeight(4),
+                    ),
+                    child:
                             controller.isAddressLoading
-                                ? Row(
-                                  children: [
-                                    SizedBox(
-                                      width: scaleHelper.scaleWidth(20),
-                                      height: scaleHelper.scaleHeight(20),
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        color: ColorConstant.primaryColor,
-                                      ),
-                                    ),
-                                    SizedBox(width: scaleHelper.scaleWidth(12)),
-                                    Text(
-                                      "Mencari alamat...",
-                                      style: TextStyleConstant.textStyleRegular
-                                          .copyWith(
-                                            fontSize: scaleHelper.scaleText(14),
-                                          ),
-                                    ),
-                                  ],
-                                )
-                                : SingleChildScrollView(
-                                  child: Text(
-                                    controller.address,
-                                    style: TextStyleConstant.textStyleRegular
-                                        .copyWith(
-                                          fontSize: scaleHelper.scaleText(14),
-                                          color: ColorConstant.darkColor2,
-                                        ),
+                            ? Row(
+                              children: [
+                                SizedBox(
+                                  width: scaleHelper.scaleWidth(20),
+                                  height: scaleHelper.scaleHeight(20),
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: ColorConstant.primaryColor,
                                   ),
                                 ),
-                      ),
+                                SizedBox(width: scaleHelper.scaleWidth(12)),
+                                Text(
+                                  "Mencari alamat...",
+                                  style: TextStyleConstant.textStyleRegular
+                                      .copyWith(
+                                        fontSize: scaleHelper.scaleText(14),
+                                      ),
+                                ),
+                              ],
+                            )
+                            : SingleChildScrollView(
+                              child: Text(
+                                    controller.address,
+                                style: TextStyleConstant.textStyleRegular
+                                    .copyWith(
+                                      fontSize: scaleHelper.scaleText(14),
+                                      color: ColorConstant.darkColor2,
+                                    ),
+                              ),
+                            ),
+                  ),
 
-                      // Tombol pilih lokasi
-                      SizedBox(height: scaleHelper.scaleHeight(16)),
+                  // Tombol pilih lokasi
+                  SizedBox(height: scaleHelper.scaleHeight(16)),
                       Consumer<PilihLokasiController>(
-                        builder: (context, controller, child) {
-                          return SizedBox(
-                            width: double.infinity,
-                            height: scaleHelper.scaleHeight(45),
-                            child: ElevatedButton(
-                              onPressed:
+                    builder: (context, controller, child) {
+                      return SizedBox(
+                        width: double.infinity,
+                        height: scaleHelper.scaleHeight(45),
+                        child: ElevatedButton(
+                          onPressed:
                                   controller.isAddressLoading
-                                      ? null
+                                  ? null
                                       : () async {
-                                        // Simpan alamat ke controller
+                                    // Simpan alamat ke controller
                                         await controller.saveAddressToSharedPreferences();
                                         
                                         // Sinkronkan data dengan JualSampahTanpaDipilahController
@@ -421,7 +421,7 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
                                         // Coba dapatkan JualSampahDipilahController jika ada
                                         try {
                                           final jualDipilahController = Provider.of<JualSampahDipilahController>(
-                                            context,
+                                      context,
                                             listen: false
                                           );
                                           // Sinkronkan data dengan JualSampahDipilahController
@@ -436,32 +436,32 @@ class _PilihLokasiViewState extends State<PilihLokasiView> with WidgetsBindingOb
                                         if (mounted) {
                                           Navigator.pop(context); // Kembali ke halaman sebelumnya
                                         }
-                                      },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: ColorConstant.primaryColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                    scaleHelper.scaleWidth(10),
-                                  ),
-                                ),
-                                disabledBackgroundColor: Colors.grey,
-                              ),
-                              child: Text(
-                                "Pilih Lokasi",
-                                style: TextStyleConstant.textStyleSemiBold.copyWith(
-                                  fontSize: scaleHelper.scaleText(14),
-                                  color: Colors.white,
-                                ),
+                                  },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: ColorConstant.primaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                scaleHelper.scaleWidth(10),
                               ),
                             ),
-                          );
-                        },
-                      ),
-                    ],
+                            disabledBackgroundColor: Colors.grey,
+                          ),
+                          child: Text(
+                            "Pilih Lokasi",
+                            style: TextStyleConstant.textStyleSemiBold.copyWith(
+                              fontSize: scaleHelper.scaleText(14),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
+          ),
+        ],
           );
         }
       ),
