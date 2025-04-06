@@ -11,6 +11,7 @@ import 'package:jeknyong_app/controllers/pembayaran_controller.dart';
 import 'package:jeknyong_app/controllers/pilih_lokasi_cari_alamat_controller.dart';
 import 'package:jeknyong_app/controllers/pilih_lokasi_controller.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/controllers/tarik_saldo_controller.dart';
 import 'package:jeknyong_app/controllers/toko_rekomendasi_controller.dart';
 import 'package:jeknyong_app/controllers/detail_toko_controller.dart';
 import 'package:jeknyong_app/controllers/keranjang_oleh_oleh_controller.dart';
@@ -24,8 +25,9 @@ import 'package:jeknyong_app/views/keranjang_jual_sampah/keranjang_jual_sampah_v
 import 'package:jeknyong_app/views/login/login_view.dart';
 import 'package:jeknyong_app/views/metode_pembayaran/metode_pembayaran_view.dart';
 import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
-import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_view.dart';
+import 'package:jeknyong_app/views/penarikan_berhasil/penarikan_berhasil_view.dart';
 import 'package:jeknyong_app/views/pilih_lokasi/pilih_lokasi_view.dart';
+import 'package:jeknyong_app/views/tarik_saldo/tarik_saldo_view.dart';
 import 'package:jeknyong_app/views/toko_rekomendasi/toko_rekomendasi_view.dart';
 import 'package:jeknyong_app/views/transaksi_berhasil/transaksi_berhasil_view.dart';
 import 'package:provider/provider.dart';
@@ -67,6 +69,7 @@ void main() {
           update: (context, jualSampahController, previous) => 
             previous ?? KeranjangJualSampahDipilahController(jualSampahController),
         ),
+        ChangeNotifierProvider(create: (_) => TarikSaldoController()),
       ],
       child: const MyApp(),
     ),
@@ -89,7 +92,6 @@ class MyApp extends StatelessWidget {
         '/lengkapi-data-1': (context) => const LengkapiData1View(),
         '/lengkapi-data-2': (context) => const LengkapiData2View(),
         '/navigation-bar': (context) => const NavigationBarView(),
-        '/oleh-oleh': (context) => const OlehOlehView(),
         '/toko-rekomendasi': (context) => const TokoRekomendasiView(),
         '/keranjang-oleh-oleh': (context) => const KeranjangOlehOlehView(),
         '/metode-pembayaran': (context) => const MetodePembayaranView(),
@@ -99,6 +101,8 @@ class MyApp extends StatelessWidget {
         '/transaksi-berhasil': (context) => const TransaksiBerhasilView(),
         '/pilih-lokasi': (context) => PilihLokasiView(),
         '/keranjang-sampah': (context) => const KeranjangJualSampahView(),
+        '/tarik-saldo': (context) => const TarikSaldoView(),
+        '/penarikan-berhasil': (context) => const PenarikanBerhasilView(),
       },
     );
   }

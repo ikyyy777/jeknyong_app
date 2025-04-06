@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jeknyong_app/constants/color_constant.dart';
 import 'package:jeknyong_app/constants/textstyle_constant.dart';
 import 'package:jeknyong_app/controllers/scale_factor_controller.dart';
+import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
 import 'package:provider/provider.dart';
 
 class HomeSaldokuWidget extends StatefulWidget {
@@ -146,39 +147,54 @@ class _HomeSaldokuWidgetState extends State<HomeSaldokuWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Container(
-                      height: scaleHelper.scaleHeight(40),
-                      margin: EdgeInsets.only(right: 8),
-                      decoration: BoxDecoration(
-                        color: ColorConstant.whiteColor,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: ColorConstant.primaryColor),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Jual Sampah',
-                          style: TextStyleConstant.textStyleSemiBold.copyWith(
-                            fontSize: scaleHelper.scaleText(14),
-                            color: ColorConstant.primaryColor,
+                    child: GestureDetector(
+                      onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NavigationBarView(initialIndex: 2),
+                        ),
+                      );
+                      },
+                      child: Container(
+                        height: scaleHelper.scaleHeight(40),
+                        margin: EdgeInsets.only(right: 8),
+                        decoration: BoxDecoration(
+                          color: ColorConstant.whiteColor,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: ColorConstant.primaryColor),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Jual Sampah',
+                            style: TextStyleConstant.textStyleSemiBold.copyWith(
+                              fontSize: scaleHelper.scaleText(14),
+                              color: ColorConstant.primaryColor,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      height: scaleHelper.scaleHeight(40),
-                      margin: EdgeInsets.only(left: 8),
-                      decoration: BoxDecoration(
-                        color: ColorConstant.primaryColor,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Tarik Saldo',
-                          style: TextStyleConstant.textStyleSemiBold.copyWith(
-                            fontSize: scaleHelper.scaleText(14),
-                            color: ColorConstant.whiteColor,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/tarik-saldo');
+                      },
+                      child: Container(
+                        height: scaleHelper.scaleHeight(40),
+                        margin: EdgeInsets.only(left: 8),
+                        decoration: BoxDecoration(
+                          color: ColorConstant.primaryColor,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Tarik Saldo',
+                            style: TextStyleConstant.textStyleSemiBold.copyWith(
+                              fontSize: scaleHelper.scaleText(14),
+                              color: ColorConstant.whiteColor,
+                            ),
                           ),
                         ),
                       ),

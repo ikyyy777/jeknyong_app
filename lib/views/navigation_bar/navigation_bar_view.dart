@@ -8,15 +8,24 @@ import 'package:jeknyong_app/views/jual_sampah/jual_sampah_view.dart';
 import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_view.dart';
 
 class NavigationBarView extends StatefulWidget {
-  const NavigationBarView({super.key});
+  final int? initialIndex;
+  const NavigationBarView({
+    super.key,
+    this.initialIndex,
+  });
 
   @override
   State<NavigationBarView> createState() => _NavigationBarViewState();
 }
 
 class _NavigationBarViewState extends State<NavigationBarView> {
-  int currentPageIndex = 0;
-  bool showJualSampahPage = false;
+  late int currentPageIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    currentPageIndex = widget.initialIndex ?? 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +56,7 @@ class _NavigationBarViewState extends State<NavigationBarView> {
             child: FloatingActionButton(
               onPressed: () {
                 setState(() {
-                  showJualSampahPage = true;
-                  currentPageIndex = -1;
+                  currentPageIndex = 2;
                 });
               },
               backgroundColor: ColorConstant.primaryColor,
@@ -66,7 +74,7 @@ class _NavigationBarViewState extends State<NavigationBarView> {
             'Jual Sampah',
             style: TextStyleConstant.textStyleRegular.copyWith(
               fontSize: 12,
-              color: showJualSampahPage ? ColorConstant.primaryColor : ColorConstant.darkColor3,
+              color: currentPageIndex == 2 ? ColorConstant.primaryColor : ColorConstant.darkColor3,
             ),
           ),
         ],
@@ -76,25 +84,23 @@ class _NavigationBarViewState extends State<NavigationBarView> {
         pageIndex: currentPageIndex,
         onTap: (index) {
           setState(() {
-            showJualSampahPage = false;
             currentPageIndex = index;
           });
         },
       ),
-      body: showJualSampahPage
-          ? const JualSampahView()
-          : <Widget>[
+      body: <Widget>[
               const HomeView(),
               const OlehOlehView(),
+              const JualSampahView(),
               Container(
                 color: Colors.blue,
                 alignment: Alignment.center,
-                child: const Text('Page 3'),
+                child: const Text('Riwayat'),
               ),
               Container(
                 color: Colors.yellow,
                 alignment: Alignment.center,
-                child: const Text('Page 4'),
+                child: const Text('Profil'),
               ),
             ][currentPageIndex],
     );
@@ -163,15 +169,15 @@ class NavBar extends StatelessWidget {
             const SizedBox(width: 80),
             navItem(
               'assets/icons/riwayat.svg',
-              pageIndex == 2,
+              pageIndex == 3,
               'Riwayat',
-              onTap: () => onTap(2),
+              onTap: () => onTap(3),
             ),
             navItem(
               'assets/icons/profile.svg',
-              pageIndex == 3,
+              pageIndex == 4,
               'Profil',
-              onTap: () => onTap(3),
+              onTap: () => onTap(4),
             ),
           ],
         ),
