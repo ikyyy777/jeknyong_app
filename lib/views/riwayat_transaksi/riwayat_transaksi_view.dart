@@ -36,6 +36,7 @@ class RiwayatTransaksiView extends StatelessWidget {
           const CustomAppbarGlobalWidget(
             title: "Riwayat Transaksi",
             showShadow: true,
+            showBackButton: false,
           ),
           SizedBox(height: scaleHelper.scaleHeight(16)),
           Expanded(
