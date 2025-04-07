@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jeknyong_app/views/jual_sampah/jual_sampah_view.dart';
 import 'package:jeknyong_app/views/oleh_oleh/oleh_oleh_view.dart';
 import 'package:jeknyong_app/views/profil/profil_view.dart';
+import 'package:jeknyong_app/views/riwayat_transaksi/riwayat_transaksi_view.dart';
 
 class NavigationBarView extends StatefulWidget {
   final int? initialIndex;
@@ -93,11 +94,7 @@ class _NavigationBarViewState extends State<NavigationBarView> {
               const HomeView(),
               const OlehOlehView(),
               const JualSampahView(),
-              Container(
-                color: Colors.blue,
-                alignment: Alignment.center,
-                child: const Text('Riwayat'),
-              ),
+              const RiwayatTransaksiView(),
               const ProfilView()
             ][currentPageIndex],
     );
