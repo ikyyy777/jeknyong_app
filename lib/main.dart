@@ -27,6 +27,7 @@ import 'package:jeknyong_app/views/metode_pembayaran/metode_pembayaran_view.dart
 import 'package:jeknyong_app/views/navigation_bar/navigation_bar_view.dart';
 import 'package:jeknyong_app/views/penarikan_berhasil/penarikan_berhasil_view.dart';
 import 'package:jeknyong_app/views/pilih_lokasi/pilih_lokasi_view.dart';
+import 'package:jeknyong_app/views/profil/profil_view.dart';
 import 'package:jeknyong_app/views/tarik_saldo/tarik_saldo_view.dart';
 import 'package:jeknyong_app/views/toko_rekomendasi/toko_rekomendasi_view.dart';
 import 'package:jeknyong_app/views/transaksi_berhasil/transaksi_berhasil_view.dart';

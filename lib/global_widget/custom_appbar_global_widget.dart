@@ -7,10 +7,12 @@ import 'package:provider/provider.dart';
 class CustomAppbarGlobalWidget extends StatelessWidget {
   final String title;
   final bool showBackButton;
+  final bool showShadow;
   const CustomAppbarGlobalWidget({
     super.key,
     required this.title,
     this.showBackButton = true,
+    this.showShadow = false,
   });
 
   @override
@@ -22,7 +24,14 @@ class CustomAppbarGlobalWidget extends StatelessWidget {
       height: scaleHelper.scaleHeight(98),
       decoration: BoxDecoration(
         color: ColorConstant.whiteColor,
-        borderRadius: BorderRadius.circular(10),
+        boxShadow: showShadow ? [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 0,
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ] : null,
       ),
       child: Padding(
         padding: EdgeInsets.only(top: scaleHelper.scaleHeight(45)),
